@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Training Applications — IHAM Admin</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("iham-theme");
+        if (!t) t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) { }
+    })();
+  </script>
+
+  <link rel="icon" href="../public/assets/img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap5.min.css">
+  <link rel="stylesheet" href="../shared/theme.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+
+<body>
+
+  <div class="admin-shell">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="sidebar" id="sidebar">
+      <a href="index.html" class="sidebar-brand">
+        <img src="../public/assets/img/logo.png" alt="IHAM logo">
+        <span>
+          <strong>Institute of Housing Administration</strong>
+          <small>Admin Panel</small>
+        </span>
+      </a>
+
+      <nav class="sidebar-nav">
+        <div class="nav-label">Overview</div>
+        <a href="index.html" class="nav-item"><i class="fa-solid fa-chart-pie"></i><span>Dashboard</span></a>
+        <a href="insights.html" class="nav-item"><i class="fa-solid fa-lightbulb"></i><span>Insights</span></a>
+        <div class="nav-label">Portfolio</div>
+        <a href="properties.html" class="nav-item"><i class="fa-solid fa-building"></i><span>Properties</span><span class="pill">6</span></a>
+        <a href="property-upload.html" class="nav-item"><i class="fa-solid fa-cloud-arrow-up"></i><span>Upload Property</span></a>
+        <div class="nav-label">Sales</div>
+        <a href="clients.html" class="nav-item"><i class="fa-solid fa-users"></i><span>Clients</span><span class="pill">12</span></a>
+        <a href="payments.html" class="nav-item"><i class="fa-solid fa-money-bill-transfer"></i><span>Payments</span></a>
+        <a href="realtors.html" class="nav-item"><i class="fa-solid fa-user-tie"></i><span>Realtors</span><span class="pill">7</span></a>
+        <a href="inspections.html" class="nav-item"><i class="fa-solid fa-calendar-check"></i><span>Inspections</span><span class="pill">4</span></a>
+        <div class="nav-label">Training</div>
+        <a href="trainees.html" class="nav-item"><i class="fa-solid fa-user-graduate"></i><span>Trainees</span><span class="pill">8</span></a>
+        <a href="training-applications.html" class="nav-item active" aria-current="page"><i class="fa-solid fa-file-signature"></i><span>Applications</span><span class="pill">2</span></a>
+        <div class="nav-label">Communication</div>
+        <a href="enquiries.html" class="nav-item"><i class="fa-solid fa-inbox"></i><span>Enquiries</span><span class="pill">2</span></a>
+        <a href="messaging.html" class="nav-item"><i class="fa-solid fa-paper-plane"></i><span>Bulk Messages</span></a>
+        <div class="nav-label">Account</div>
+        <a href="settings.html" class="nav-item"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+      </nav>
+
+      <div class="sidebar-foot">
+        <a href="settings.html" class="sidebar-user">
+          <span class="avatar">A</span>
+          <span class="who">
+            <strong>Admin User</strong>
+            <small>Administrator</small>
+          </span>
+        </a>
+        <a href="#" data-logout class="sidebar-user mt-1">
+          <span class="avatar" style="background:var(--bg-inset);color:var(--text-muted)">
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </span>
+          <span class="who"><strong>Sign out</strong></span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- ============ MAIN ============ -->
+    <div class="admin-main">
+
+      <header class="topbar">
+        <button class="sidebar-toggle" type="button" aria-label="Open navigation"
+          aria-expanded="false" aria-controls="sidebar">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <h1>Training Applications</h1>
+
+        <div class="topbar-actions">
+          <button class="theme-toggle" type="button" aria-label="Switch colour theme" aria-pressed="false">
+            <i class="fa-solid fa-moon icon-moon"></i>
+            <i class="fa-solid fa-sun icon-sun"></i>
+          </button>
+          <button class="icon-btn" type="button" aria-label="Notifications">
+            <i class="fa-regular fa-bell"></i>
+            <span class="dot"></span>
+          </button>
+          <a href="../public/index.html" class="icon-btn" target="_blank" rel="noopener"
+            aria-label="View the public website" title="View the public website">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+      </header>
+
+      <main class="admin-body">
+        <div class="page-head">
+          <div>
+            <h2>Training applications</h2>
+            <p>Submitted from the website. Accepting one moves the applicant into Trainees.</p>
+          </div>
+          <div class="actions">
+            <button class="btn btn-ghost" type="button" data-demo-btn="Export queued.">
+              <i class="fa-solid fa-file-export me-1"></i> Export
+            </button>
+          </div>
+        </div>
+
+        <div class="row g-3 mb-4" id="apKpis"></div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <div><h3>Applications</h3><p>Newest first</p></div>
+            <div class="seg" id="apSeg">
+              <button class="active" data-status="all" type="button">All</button>
+              <button data-status="New" type="button">New</button>
+              <button data-status="Reviewing" type="button">Reviewing</button>
+              <button data-status="Accepted" type="button">Accepted</button>
+            </div>
+          </div>
+          <div class="panel-body flush">
+            <div class="table-wrap">
+              <table class="table align-middle" id="apTable" style="width:100%">
+                <thead>
+                  <tr>
+                    <th>Applicant</th>
+                    <th>Programme</th>
+                    <th>Mode</th>
+                    <th>State</th>
+                    <th>Occupation</th>
+                    <th>Heard via</th>
+                    <th>Applied</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </main>
+
+    </div>
+  </div>
+
+  <div class="toast-host"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.8/js/dataTables.bootstrap5.min.js"></script>
+  <script src="../shared/theme.js"></script>
+  <script src="assets/js/admin-data.js"></script>
+  <script src="assets/js/admin.js"></script>
+  <script>
+    (function () {
+      var A = window.Admin;
+      var aps = window.ADMIN_APPLICATIONS;
+      var by = function (s) { return aps.filter(function (a) { return a.status === s; }).length; };
+
+      document.getElementById("apKpis").innerHTML = [
+        { label: "Total Applications", value: aps.length, ico: "fa-file-signature", tone: "", foot: "This intake window" },
+        { label: "Awaiting Review", value: by("New"), ico: "fa-inbox", tone: "warn", foot: "Respond within 2 working days" },
+        { label: "Accepted", value: by("Accepted"), ico: "fa-circle-check", tone: "ok", foot: "Places confirmed" },
+        { label: "Declined", value: by("Declined"), ico: "fa-circle-xmark", tone: "bad", foot: "Not a fit this intake" }
+      ].map(function (k) {
+        return '<div class="col-6 col-lg-3"><div class="kpi">' +
+          '<div class="kpi-top"><span class="kpi-label">' + k.label + '</span>' +
+          '<span class="kpi-ico ' + k.tone + '"><i class="fa-solid ' + k.ico + '"></i></span></div>' +
+          '<div class="kpi-value">' + k.value + '</div><div class="kpi-foot">' + k.foot + '</div></div></div>';
+      }).join("");
+
+      function rows(status) {
+        return aps.filter(function (a) { return status === "all" || a.status === status; })
+          .map(function (a) {
+            return "<tr>" +
+              '<td><div class="cell-main"><span class="avatar" style="width:36px;height:36px;font-size:.74rem">' +
+                A.initials(a.name) + '</span><div class="cell-text"><strong>' + A.esc(a.name) + "</strong>" +
+                "<small>" + A.esc(a.email) + "</small></div></div></td>" +
+              "<td>" + A.esc(a.program) + "</td>" +
+              '<td><span class="badge-soft neutral">' + A.esc(a.mode) + "</span></td>" +
+              '<td><span class="badge-soft info">' + A.esc(a.state) + "</span></td>" +
+              "<td>" + A.esc(a.occupation) + "</td>" +
+              '<td><small style="color:var(--text-muted)">' + A.esc(a.heard) + "</small></td>" +
+              "<td>" + A.date(a.date) + "</td>" +
+              "<td>" + A.statusBadge(a.status) + "</td>" +
+              "<td>" + A.rowActions([
+                { icon: "fa-check", title: "Accept" },
+                { icon: "fa-eye", title: "View application" },
+                { icon: "fa-xmark", title: "Decline", danger: true }
+              ]) + "</td>" +
+            "</tr>";
+          }).join("");
+      }
+
+      var tbody = document.querySelector("#apTable tbody");
+      tbody.innerHTML = rows("all");
+      var dt = A.makeTable("#apTable", { order: [[6, "desc"]], columnDefs: [{ orderable: false, targets: 8 }] });
+
+      document.querySelectorAll("#apSeg button").forEach(function (b) {
+        b.addEventListener("click", function () {
+          document.querySelectorAll("#apSeg button").forEach(function (x) { x.classList.remove("active"); });
+          b.classList.add("active");
+          if (dt) dt.destroy();
+          tbody.innerHTML = rows(b.dataset.status);
+          dt = A.makeTable("#apTable", { order: [[6, "desc"]], columnDefs: [{ orderable: false, targets: 8 }] });
+        });
+      });
+
+      document.addEventListener("click", function (e) {
+        var btn = e.target.closest(".row-btn");
+        if (btn) { A.toast(btn.getAttribute("title") + " — wire to the API."); return; }
+        var d = e.target.closest("[data-demo-btn]");
+        if (d) A.toast(d.dataset.demoBtn);
+      });
+    })();
+  </script>
+</body>
+
+</html>

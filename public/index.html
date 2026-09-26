@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IHAM — Institute of Housing Administration & Management</title>
+  <meta name="description"
+    content="Verified land and property across Abuja and Lagos, plus professional certification in housing administration and management.">
+
+  <!-- Apply the saved theme before first paint so dark-mode visitors never see a white flash -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("iham-theme");
+        if (!t) t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) { }
+    })();
+  </script>
+
+  <link rel="icon" href="assets/img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="../shared/theme.css">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header">
+    <div class="shell">
+      <a href="index.html" class="brand">
+        <img src="assets/img/logo.png" alt="IHAM logo">
+        <span class="brand-text">
+          <strong>Institute of Housing Administration</strong>
+          <small>&amp; Management Ltd/Gte</small>
+        </span>
+      </a>
+
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html" class="active">Home</a>
+        <a href="properties.html">Properties</a>
+        <a href="land-investment.html">Land Investment</a>
+        <a href="training.html">Training</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle" type="button" aria-label="Switch colour theme" aria-pressed="false">
+          <i class="fa-solid fa-moon icon-moon"></i>
+          <i class="fa-solid fa-sun icon-sun"></i>
+        </button>
+        <a href="contact.html" class="btn btn-primary d-none d-sm-inline-flex">Book Inspection</a>
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== HERO CAROUSEL ===================== -->
+  <section class="hero">
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6500">
+
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+          aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+
+      <div class="carousel-inner">
+
+        <!-- Slide 1 — Property -->
+        <div class="carousel-item active">
+          <div class="hero-slide">
+            <img class="slide-bg" src="assets/img/residential-property.jpg" alt="">
+            <div class="shell">
+              <div class="hero-copy">
+                <span class="eyebrow">Property For Sale</span>
+                <h1>Own a home with paperwork you never have to worry about.</h1>
+                <p>
+                  Every listing we carry has been verified at the registry before it reaches this page —
+                  title, survey and approvals checked, so what you see is what you get.
+                </p>
+                <div class="hero-cta">
+                  <a href="properties.html" class="btn btn-primary btn-lg">
+                    Browse Properties <i class="fa-solid fa-arrow-right ms-2"></i>
+                  </a>
+                  <a href="#properties" class="btn btn-ghost btn-lg">View Featured</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 — Land -->
+        <div class="carousel-item">
+          <div class="hero-slide">
+            <img class="slide-bg" src="assets/img/land-property.jpg" alt="">
+            <div class="shell">
+              <div class="hero-copy">
+                <span class="eyebrow">Land Investment</span>
+                <h1>Land that grows while you sleep.</h1>
+                <p>
+                  Dry, surveyed, fenced plots on the corridors government is already expanding into —
+                  from ₦3.2m, spread over up to 18 months at zero interest.
+                </p>
+                <div class="hero-cta">
+                  <a href="land-investment.html" class="btn btn-primary btn-lg">
+                    See Land Offers <i class="fa-solid fa-arrow-right ms-2"></i>
+                  </a>
+                  <a href="contact.html" class="btn btn-ghost btn-lg">Request Inspection</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3 — Training -->
+        <div class="carousel-item">
+          <div class="hero-slide">
+            <img class="slide-bg" src="assets/img/housing-administration.jpg" alt="">
+            <div class="shell">
+              <div class="hero-copy">
+                <span class="eyebrow">Professional Training</span>
+                <h1>Become certified in housing administration.</h1>
+                <p>
+                  Three professional programmes taught by practitioners who run estates for a living.
+                  Online, hybrid or in person — with certification that employers recognise.
+                </p>
+                <div class="hero-cta">
+                  <a href="training.html" class="btn btn-primary btn-lg">
+                    Explore Programmes <i class="fa-solid fa-arrow-right ms-2"></i>
+                  </a>
+                  <a href="training.html#apply" class="btn btn-ghost btn-lg">Apply Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <!-- Quick search riding the hero edge -->
+    <div class="shell hero-search">
+      <div class="surface">
+        <form class="row g-2 align-items-end" action="properties.html" method="get">
+          <div class="col-lg-4 col-md-6">
+            <label class="form-label" for="qLocation">Location</label>
+            <select class="form-select" id="qLocation" name="location">
+              <option value="">Anywhere</option>
+              <option>Abuja</option>
+              <option>Lagos</option>
+              <option>Port Harcourt</option>
+            </select>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <label class="form-label" for="qType">Looking for</label>
+            <select class="form-select" id="qType" name="track">
+              <option value="">Property or land</option>
+              <option value="property">Property</option>
+              <option value="land">Land investment</option>
+            </select>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <label class="form-label" for="qBudget">Budget</label>
+            <select class="form-select" id="qBudget" name="budget">
+              <option value="">Any budget</option>
+              <option value="0-10">Under ₦10m</option>
+              <option value="10-50">₦10m – ₦50m</option>
+              <option value="50-100">₦50m – ₦100m</option>
+              <option value="100+">Above ₦100m</option>
+            </select>
+          </div>
+          <div class="col-lg-2 col-md-6">
+            <button class="btn btn-primary w-100" type="submit">
+              <i class="fa-solid fa-magnifying-glass me-1"></i> Search
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section class="section" id="about">
+    <div class="shell">
+      <div class="row g-5 align-items-center">
+
+        <div class="col-lg-6" data-reveal>
+          <div class="about-media">
+            <img src="assets/img/management.jpg" alt="IHAM management team at work">
+            <div class="about-badge">
+              <strong>15+</strong>
+              <span>Years in practice</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6" data-reveal>
+          <div class="section-head mb-4">
+            <span class="eyebrow">Who We Are</span>
+            <h2>A housing institute that also sells the houses.</h2>
+            <p>
+              The Institute of Housing Administration &amp; Management Ltd/Gte does two things that
+              belong together. We train the professionals who administer housing in Nigeria, and we
+              broker the land and property they go on to manage. Being on both sides is exactly why
+              our due diligence is different — we teach the standard, so we are not about to sell
+              you something that fails it.
+            </p>
+          </div>
+
+          <div class="feature-row">
+            <div class="ico"><i class="fa-solid fa-file-shield"></i></div>
+            <div>
+              <h4>Registry-verified title</h4>
+              <p>Every listing is checked at the land registry before it goes live. No exceptions, no "we'll sort it
+                later".</p>
+            </div>
+          </div>
+
+          <div class="feature-row">
+            <div class="ico"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div>
+              <h4>Practitioners, not salespeople</h4>
+              <p>The people who show you a property are the same people who teach estate practice at the institute.</p>
+            </div>
+          </div>
+
+          <div class="feature-row">
+            <div class="ico"><i class="fa-solid fa-handshake-angle"></i></div>
+            <div>
+              <h4>We stay after the sale</h4>
+              <p>Facility management, tenant administration and rent collection continue long after your keys change
+                hands.</p>
+            </div>
+          </div>
+
+          <a href="about.html" class="btn btn-outline-primary mt-4">
+            More about the institute <i class="fa-solid fa-arrow-right ms-1"></i>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== STATS BAND ===================== -->
+  <section class="stats-band">
+    <div class="shell">
+      <div class="row">
+        <div class="col-6 col-lg-3">
+          <div class="stat-cell">
+            <div class="ico"><i class="fa-solid fa-calendar-days"></i></div>
+            <div class="num" data-count="15" data-suffix="+">0</div>
+            <div class="label">Years of Experience</div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="stat-cell">
+            <div class="ico"><i class="fa-solid fa-face-smile"></i></div>
+            <div class="num" data-count="2400" data-suffix="+">0</div>
+            <div class="label">Happy Clients</div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="stat-cell">
+            <div class="ico"><i class="fa-solid fa-building"></i></div>
+            <div class="num" data-count="860" data-suffix="+">0</div>
+            <div class="label">Properties Delivered</div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="stat-cell">
+            <div class="ico"><i class="fa-solid fa-user-graduate"></i></div>
+            <div class="num" data-count="1750" data-suffix="+">0</div>
+            <div class="label">Trainees Certified</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROPERTIES ===================== -->
+  <section class="section" id="properties">
+    <div class="shell">
+      <div class="section-head center" data-reveal>
+        <span class="eyebrow">Available Now</span>
+        <h2>Property and land, kept separate on purpose.</h2>
+        <p>
+          Buying a home and investing in land are two different decisions with two different
+          checklists. Filter to whichever one you came for.
+        </p>
+      </div>
+
+      <div class="filter-pills justify-content-center" data-reveal>
+        <button class="filter-pill active" data-filter="all" type="button">All Listings</button>
+        <button class="filter-pill" data-filter="property" type="button">
+          <i class="fa-solid fa-house me-1"></i> Property
+        </button>
+        <button class="filter-pill" data-filter="land" type="button">
+          <i class="fa-solid fa-map-location-dot me-1"></i> Land Investment
+        </button>
+      </div>
+
+      <div class="row g-4" data-property-grid data-limit="6"></div>
+
+      <div class="text-center mt-5">
+        <a href="properties.html" class="btn btn-outline-primary btn-lg">
+          View All Listings <i class="fa-solid fa-arrow-right ms-1"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WHY TRUST US ===================== -->
+  <section class="section section-sunken" id="why-us">
+    <div class="shell">
+      <div class="section-head center" data-reveal>
+        <span class="eyebrow">Why Trust Us</span>
+        <h2>The expertise behind every transaction.</h2>
+        <p>
+          Land fraud in Nigeria is not a rumour — it is a routine risk. Here is precisely what we do
+          so it does not become your problem.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3" data-reveal>
+          <div class="trust-card">
+            <div class="ico"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+            <h3>Title Verification</h3>
+            <p>
+              We run a full search at the state land registry on every property before it is listed,
+              and we show you the result — not a summary of it.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3" data-reveal>
+          <div class="trust-card">
+            <div class="ico"><i class="fa-solid fa-scale-balanced"></i></div>
+            <h3>Legal Documentation</h3>
+            <p>
+              Deeds, assignments and consents are prepared by our in-house legal team and registered
+              in your name, not held "pending".
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3" data-reveal>
+          <div class="trust-card">
+            <div class="ico"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+            <h3>Flexible Payment</h3>
+            <p>
+              Spread land payments over 12 to 18 months with no interest added. Your allocation is
+              reserved from the first instalment.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3" data-reveal>
+          <div class="trust-card">
+            <div class="ico"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+            <h3>After-Sale Management</h3>
+            <p>
+              Facility management, tenant sourcing and rent administration if you would rather not
+              run the property yourself.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TEAM ===================== -->
+  <section class="section" id="team">
+    <div class="shell">
+      <div class="section-head center" data-reveal>
+        <span class="eyebrow">Meet The Team</span>
+        <h2>The people who run this institute.</h2>
+        <p>
+          You should know who you are dealing with before you part with money. These are the
+          principals behind IHAM.
+        </p>
+      </div>
+
+      <div class="row g-4 justify-content-center">
+        <div class="col-sm-6 col-lg-3" data-reveal>
+          <div class="team-card">
+            <div class="team-photo"><img src="assets/img/team-lead.jpg" alt=""></div>
+            <h3>Dr. Chukwuemeka Obi</h3>
+            <div class="team-role">Founder &amp; Managing Director</div>
+            <p>Twenty years in housing policy and estate practice. Sets the standard every listing is measured against.
+            </p>
+            <div class="team-socials">
+              <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="#" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3" data-reveal>
+          <div class="team-card">
+            <div class="team-photo"><img src="assets/img/sarah.jpg" alt=""></div>
+            <h3>Sarah Adeyemi</h3>
+            <div class="team-role">Director, Estate Services</div>
+            <p>Runs acquisitions and due diligence. If a title does not clear her desk, it does not reach this website.
+            </p>
+            <div class="team-socials">
+              <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="#" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3" data-reveal>
+          <div class="team-card">
+            <div class="team-photo"><img src="assets/img/john.jpg" alt=""></div>
+            <h3>John Okafor</h3>
+            <div class="team-role">Head of Training</div>
+            <p>Designs the certification curriculum and still teaches two modules himself every intake.</p>
+            <div class="team-socials">
+              <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="#" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3" data-reveal>
+          <div class="team-card">
+            <div class="team-photo"><img src="assets/img/maya.jpg" alt=""></div>
+            <h3>Maya Ibrahim</h3>
+            <div class="team-role">Head of Client Relations</div>
+            <p>Coordinates the realtor network and makes sure every inspection request gets answered the same day.</p>
+            <div class="team-socials">
+              <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="#" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TESTIMONIALS ===================== -->
+  <section class="section section-sunken" id="testimonials">
+    <div class="shell">
+      <div class="section-head center" data-reveal>
+        <span class="eyebrow">What Clients Say</span>
+        <h2>Two thousand four hundred completed transactions.</h2>
+        <p>A few of the people behind that number.</p>
+      </div>
+
+      <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5500">
+        <div class="carousel-inner">
+
+          <div class="testimonial-card">
+            <div class="quote-mark">&ldquo;</div>
+            <div class="testimonial-stars">★★★★★</div>
+            <p>
+              I had been burned once before in Kuje, so I came in suspicious. They handed me the
+              registry search before I even asked and let my own lawyer verify it. That is the
+              first time an agent has done that for me.
+            </p>
+            <div class="testimonial-author">
+              <img src="assets/img/john.jpg" alt="">
+              <div>
+                <strong>Emmanuel Okonkwo</strong>
+                <small>Bought at Ridgeview Estate, Kuje</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="quote-mark">&ldquo;</div>
+            <div class="testimonial-stars">★★★★★</div>
+            <p>
+              The 18-month plan is what made it possible for me at all. I started with one plot on
+              a teacher's salary and I am on my third now. No interest, no hidden charge, allocation
+              confirmed from the first payment.
+            </p>
+            <div class="testimonial-author">
+              <img src="assets/img/sarah.jpg" alt="">
+              <div>
+                <strong>Chidinma Nwosu</strong>
+                <small>Investor, Harvest Gardens Epe</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="quote-mark">&ldquo;</div>
+            <div class="testimonial-stars">★★★★★</div>
+            <p>
+              I took the Housing Management certification while working full time. The online
+              format actually worked, and the certificate got me the estate manager role I applied
+              for four months later.
+            </p>
+            <div class="testimonial-author">
+              <img src="assets/img/maya.jpg" alt="">
+              <div>
+                <strong>Amina Bello</strong>
+                <small>Graduate, Housing Management &amp; Practice</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="quote-mark">&ldquo;</div>
+            <div class="testimonial-stars">★★★★★</div>
+            <p>
+              They manage two of my properties in Wuse now. Rent lands on time, tenants get handled
+              without me hearing about it, and I get a statement every quarter. Worth every naira of
+              the fee.
+            </p>
+            <div class="testimonial-author">
+              <img src="assets/img/team-lead.jpg" alt="">
+              <div>
+                <strong>Babatunde Adebayo</strong>
+                <small>Landlord, Wuse 2</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="quote-mark">&ldquo;</div>
+            <div class="testimonial-stars">★★★★★</div>
+            <p>
+              Booked the inspection on a Sunday night through WhatsApp and someone met me at the
+              site on Tuesday morning. Small thing, but it told me everything about how they
+              operate.
+            </p>
+            <div class="testimonial-author">
+              <img src="assets/img/john.jpg" alt="">
+              <div>
+                <strong>Grace Adeyinka</strong>
+                <small>Bought in Gwarinpa, Abuja</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="quote-mark">&ldquo;</div>
+            <div class="testimonial-stars">★★★★★</div>
+            <p>
+              As a realtor I have worked with several firms. IHAM is the only one where my
+              commission arrives without me having to chase it, and where my client's file is
+              actually traceable.
+            </p>
+            <div class="testimonial-author">
+              <img src="assets/img/maya.jpg" alt="">
+              <div>
+                <strong>Ifeanyi Eze</strong>
+                <small>Partner Realtor, Lagos</small>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+          <i class="fa-solid fa-arrow-right"></i>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TRAINING ===================== -->
+  <section class="section" id="training">
+    <div class="shell">
+      <div class="training-panel" data-reveal>
+        <div class="row g-0 align-items-stretch">
+          <div class="col-lg-7">
+            <div class="inner">
+              <span class="eyebrow">Professional Training</span>
+              <h2>Get certified in housing administration and management.</h2>
+              <p>
+                The institute runs three professional programmes for people who want to practise
+                housing administration properly — whether you are already working in estate
+                management or moving into it from somewhere else.
+              </p>
+
+              <ul class="training-list">
+                <li><i class="fa-solid fa-circle-check"></i> Taught by practitioners who manage real estates daily</li>
+                <li><i class="fa-solid fa-circle-check"></i> Online, hybrid and in-person intakes</li>
+                <li><i class="fa-solid fa-circle-check"></i> Certification recognised across the sector</li>
+                <li><i class="fa-solid fa-circle-check"></i> Job placement support for top-performing graduates</li>
+              </ul>
+
+              <div class="d-flex flex-wrap gap-2">
+                <a href="training.html" class="btn btn-primary btn-lg">
+                  View Programmes <i class="fa-solid fa-arrow-right ms-1"></i>
+                </a>
+                <a href="training.html#apply" class="btn btn-ghost btn-lg">Apply For Training</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-5 d-none d-lg-block">
+            <div class="training-media">
+              <img src="assets/img/housing-administration-2.jpg" alt="Training session in progress">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MAP & CONTACT ===================== -->
+  <section class="section section-sunken" id="contact">
+    <div class="shell">
+      <div class="row g-5 align-items-center">
+
+        <div class="col-lg-5" data-reveal>
+          <div class="section-head mb-4">
+            <span class="eyebrow">Visit Us</span>
+            <h2>Come and see us in person.</h2>
+            <p>
+              Our office is open Monday to Friday, and Saturday by appointment. Walk in, or book a
+              site inspection and we will meet you at the property instead.
+            </p>
+          </div>
+
+          <div class="contact-line">
+            <div class="ico"><i class="fa-solid fa-location-dot"></i></div>
+            <div>
+              <strong>Head Office</strong>
+              <span>1st Avenue,plot 64,C close,Qwarimpa,Abuja</span>
+            </div>
+          </div>
+
+          <div class="contact-line">
+            <div class="ico"><i class="fa-solid fa-location-dot"></i></div>
+            <div>
+              <strong>Headquarters </strong>
+              <span>Address 10, Zambezi Crescent,Adjacent INEC Headquarters,Abuja. </span>
+            </div>
+          </div>
+
+          <div class="contact-line">
+            <div class="ico"><i class="fa-solid fa-location-dot"></i></div>
+            <div>
+              <strong>London Office</strong>
+              <span>No. 10, kelvine court,woodland Grove,Isleworth,London TW7 6NT </span>
+              
+            </div>
+          </div>
+
+
+
+
+
+          <div class="contact-line">
+            <div class="ico"><i class="fa-solid fa-phone"></i></div>
+            <div>
+              <strong>Phone</strong>
+              <span>+234 9067871178</span>
+              <span>+234 8058891992</span>
+              <span>+234 8156207798</span>
+              <span>+447868306399</span>
+            </div>
+          </div>
+
+          <div class="contact-line">
+            <div class="ico"><i class="fa-solid fa-envelope"></i></div>
+            <div>
+              <strong>Email</strong>
+              <span>info@iham.org.ng</span>
+            </div>
+          </div>
+
+          <div class="contact-line">
+            <div class="ico"><i class="fa-solid fa-clock"></i></div>
+            <div>
+              <strong>Opening Hours</strong>
+              <span>Mon – Fri, 8:00am – 5:00pm · Sat by appointment</span>
+            </div>
+          </div>
+
+          <a href="#" data-wa-link target="_blank" rel="noopener" class="btn btn-primary btn-lg mt-4">
+            <i class="fa-brands fa-whatsapp me-2"></i> Chat on WhatsApp
+          </a>
+        </div>
+
+        <div class="col-lg-7" data-reveal>
+          <div class="map-frame">
+            <!-- Plain Google Maps embed: no API key, no billing account, always loads. -->
+            <iframe
+              src="https://maps.google.com/maps?q=Ahmadu%20Bello%20Way%2C%20Garki%20II%2C%20Abuja%2C%20Nigeria&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              title="IHAM head office location on Google Maps" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="shell">
+      <div class="row g-4">
+
+        <div class="col-lg-4">
+          <a href="index.html" class="brand mb-3">
+            <img src="assets/img/logo.png" alt="IHAM logo">
+            <span class="brand-text">
+              <strong>Institute of Housing Administration</strong>
+              <small>&amp; Management Ltd/Gte</small>
+            </span>
+          </a>
+          <p>
+            Verified land and property across Abuja and Lagos, and the professional certification
+            that sets the standard we sell by.
+          </p>
+          <div class="team-socials justify-content-start mt-3">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" data-wa-link aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="index.html#team">Our Team</a></li>
+            <li><a href="index.html#why-us">Why Trust Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h4>Explore</h4>
+          <ul class="footer-links">
+            <li><a href="properties.html">Properties</a></li>
+            <li><a href="land-investment.html">Land Investment</a></li>
+            <li><a href="training.html">Training</a></li>
+            <li><a href="index.html#testimonials">Testimonials</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4">
+          <h4>Get In Touch</h4>
+          <ul class="footer-links">
+            <li><i class="fa-solid fa-location-dot me-2"></i>1st Avenue,plot 64,C close,Qwarimpa,Abuja</li>
+            <li><i class="fa-solid fa-location-dot me-2"></i>Address 10, Zambezi Crescent,Adjacent INEC Headquarters,Abuja.</li>
+            <li><i class="fa-solid fa-location-dot me-2"></i>No. 10, kelvine court,woodland Grove,Isleworth,London TW7 6NT</li>
+            <li><i class="fa-solid fa-phone me-2"></i> +234 9067871178</li>
+            <li><i class="fa-solid fa-phone me-2"></i> +234 8058891992</li>
+            <li><i class="fa-solid fa-phone me-2"></i> 234 8156207798</li>
+            <li><i class="fa-solid fa-phone me-2"></i> +447868306399</li>
+            <li><i class="fa-solid fa-envelope me-2"></i> info@iham.org.ng</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; <span data-year>2026</span> Institute of Housing Administration &amp; Management Ltd/Gte. All
+          rights reserved.</span>
+        <span>
+          <a href="#">Privacy Policy</a> &nbsp;·&nbsp;
+          <a href="#">Terms of Service</a> &nbsp;·&nbsp;
+          <a href="../admin/login.html">Admin</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" data-wa-link class="wa-float" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../shared/theme.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/site.js"></script>
+</body>
+
+</html>

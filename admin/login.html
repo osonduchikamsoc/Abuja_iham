@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Sign In — IHAM</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("iham-theme");
+        if (!t) t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) { }
+    })();
+  </script>
+
+  <link rel="icon" href="../public/assets/img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="../shared/theme.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+
+<body>
+
+  <div class="auth-shell">
+
+    <!-- LEFT: brand panel -->
+    <aside class="auth-aside">
+      <img class="auth-aside-bg" src="../public/assets/img/management.jpg" alt="">
+
+      <a href="../public/index.html" class="brand">
+        <img src="../public/assets/img/logo.png" alt="IHAM logo">
+        <span>
+          <strong>Institute of Housing Administration</strong>
+          <small>&amp; Management Ltd/Gte</small>
+        </span>
+      </a>
+
+      <div class="auth-pitch">
+        <h2>The desk behind every listing, payment and trainee.</h2>
+        <p>
+          Properties, land allocations, realtor commissions, training intakes and the
+          insight that tells you where your next buyer is coming from.
+        </p>
+
+        <div class="auth-figures">
+          <div><strong>860+</strong><span>Properties</span></div>
+          <div><strong>2,400+</strong><span>Clients</span></div>
+          <div><strong>1,750+</strong><span>Certified</span></div>
+        </div>
+      </div>
+
+      <div class="auth-foot">
+        &copy; <span data-year>2026</span> IHAM Ltd/Gte · Authorised personnel only
+      </div>
+    </aside>
+
+    <!-- RIGHT: form -->
+    <main class="auth-main">
+      <div class="auth-card">
+
+        <a href="../public/index.html" class="auth-logo">
+          <img src="../public/assets/img/logo.png" alt="IHAM logo">
+          <span>
+            <strong>Institute of Housing Administration</strong>
+            <small>Admin Panel</small>
+          </span>
+        </a>
+
+        <div class="d-flex justify-content-between align-items-start gap-3 mb-1">
+          <div>
+            <h1>Sign in</h1>
+          </div>
+          <button class="theme-toggle" type="button" aria-label="Switch colour theme" aria-pressed="false">
+            <i class="fa-solid fa-moon icon-moon"></i>
+            <i class="fa-solid fa-sun icon-sun"></i>
+          </button>
+        </div>
+
+        <p class="lead-sm">Welcome back. Use your institute credentials to continue.</p>
+
+        <form id="loginForm" novalidate>
+
+          <div class="mb-3">
+            <label class="form-label" for="email">Email address</label>
+            <input type="email" class="form-control" id="email" required autocomplete="username"
+              placeholder="you@iham.org.ng" value="admin@iham.org.ng">
+            <div class="invalid-feedback">Enter the email on your staff account.</div>
+          </div>
+
+          <div class="mb-2">
+            <div class="d-flex justify-content-between align-items-center">
+              <label class="form-label mb-0" for="password">Password</label>
+              <a href="forgot-password.html" class="small" style="color: var(--accent)">Forgot?</a>
+            </div>
+            <div class="pw-wrap mt-2">
+              <input type="password" class="form-control" id="password" required
+                autocomplete="current-password" placeholder="••••••••••">
+              <button class="pw-toggle" type="button" aria-label="Show password">
+                <i class="fa-regular fa-eye"></i>
+              </button>
+            </div>
+            <div class="invalid-feedback d-block d-none" id="pwErr">Enter your password.</div>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center my-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="remember" checked>
+              <label class="form-check-label small text-muted-token" for="remember">
+                Keep me signed in
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg w-100">
+            Sign in <i class="fa-solid fa-arrow-right ms-1"></i>
+          </button>
+
+          <div id="loginError" class="mt-3 d-none">
+            <div class="d-flex gap-2 align-items-start p-3"
+              style="border:1px solid var(--danger);background:rgba(180,86,77,.1);border-radius:var(--radius)">
+              <i class="fa-solid fa-circle-exclamation" style="color:var(--danger);margin-top:2px"></i>
+              <div class="small">Those details did not match an account. Check the email and try again.</div>
+            </div>
+          </div>
+        </form>
+
+        <div class="auth-divider">Secure area</div>
+
+        <p class="small text-muted-token mb-0">
+          <i class="fa-solid fa-shield-halved me-1" style="color: var(--accent)"></i>
+          Sessions end after 30 minutes of inactivity. Never share your credentials — IHAM staff
+          will not ask for your password.
+        </p>
+
+        <p class="small text-muted-token mt-4 mb-0">
+          <a href="../public/index.html" style="color: var(--accent)">
+            <i class="fa-solid fa-arrow-left me-1"></i> Back to the website
+          </a>
+        </p>
+
+      </div>
+    </main>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../shared/theme.js"></script>
+  <script src="assets/js/admin.js"></script>
+  <script>
+    // Design stage: any password of 6+ characters gets you in.
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var form = e.target;
+      var pw = document.getElementById("password");
+      var err = document.getElementById("loginError");
+
+      if (!form.checkValidity() || pw.value.length < 6) {
+        form.classList.add("was-validated");
+        err.classList.remove("d-none");
+        return;
+      }
+
+      err.classList.add("d-none");
+      try { sessionStorage.setItem("iham-admin", "1"); } catch (e2) { }
+      window.location.href = "index.html";
+    });
+  </script>
+</body>
+
+</html>

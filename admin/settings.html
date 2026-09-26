@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings — IHAM Admin</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("iham-theme");
+        if (!t) t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) { }
+    })();
+  </script>
+
+  <link rel="icon" href="../public/assets/img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="../shared/theme.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+
+<body>
+
+  <div class="admin-shell">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="sidebar" id="sidebar">
+      <a href="index.html" class="sidebar-brand">
+        <img src="../public/assets/img/logo.png" alt="IHAM logo">
+        <span>
+          <strong>Institute of Housing Administration</strong>
+          <small>Admin Panel</small>
+        </span>
+      </a>
+
+      <nav class="sidebar-nav">
+        <div class="nav-label">Overview</div>
+        <a href="index.html" class="nav-item"><i class="fa-solid fa-chart-pie"></i><span>Dashboard</span></a>
+        <a href="insights.html" class="nav-item"><i class="fa-solid fa-lightbulb"></i><span>Insights</span></a>
+        <div class="nav-label">Portfolio</div>
+        <a href="properties.html" class="nav-item"><i class="fa-solid fa-building"></i><span>Properties</span><span class="pill">6</span></a>
+        <a href="property-upload.html" class="nav-item"><i class="fa-solid fa-cloud-arrow-up"></i><span>Upload Property</span></a>
+        <div class="nav-label">Sales</div>
+        <a href="clients.html" class="nav-item"><i class="fa-solid fa-users"></i><span>Clients</span><span class="pill">12</span></a>
+        <a href="payments.html" class="nav-item"><i class="fa-solid fa-money-bill-transfer"></i><span>Payments</span></a>
+        <a href="realtors.html" class="nav-item"><i class="fa-solid fa-user-tie"></i><span>Realtors</span><span class="pill">7</span></a>
+        <a href="inspections.html" class="nav-item"><i class="fa-solid fa-calendar-check"></i><span>Inspections</span><span class="pill">4</span></a>
+        <div class="nav-label">Training</div>
+        <a href="trainees.html" class="nav-item"><i class="fa-solid fa-user-graduate"></i><span>Trainees</span><span class="pill">8</span></a>
+        <a href="training-applications.html" class="nav-item"><i class="fa-solid fa-file-signature"></i><span>Applications</span><span class="pill">2</span></a>
+        <div class="nav-label">Communication</div>
+        <a href="enquiries.html" class="nav-item"><i class="fa-solid fa-inbox"></i><span>Enquiries</span><span class="pill">2</span></a>
+        <a href="messaging.html" class="nav-item"><i class="fa-solid fa-paper-plane"></i><span>Bulk Messages</span></a>
+        <div class="nav-label">Account</div>
+        <a href="settings.html" class="nav-item active" aria-current="page"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+      </nav>
+
+      <div class="sidebar-foot">
+        <a href="settings.html" class="sidebar-user">
+          <span class="avatar">A</span>
+          <span class="who">
+            <strong>Admin User</strong>
+            <small>Administrator</small>
+          </span>
+        </a>
+        <a href="#" data-logout class="sidebar-user mt-1">
+          <span class="avatar" style="background:var(--bg-inset);color:var(--text-muted)">
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </span>
+          <span class="who"><strong>Sign out</strong></span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- ============ MAIN ============ -->
+    <div class="admin-main">
+
+      <header class="topbar">
+        <button class="sidebar-toggle" type="button" aria-label="Open navigation"
+          aria-expanded="false" aria-controls="sidebar">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <h1>Settings</h1>
+
+        <div class="topbar-actions">
+          <button class="theme-toggle" type="button" aria-label="Switch colour theme" aria-pressed="false">
+            <i class="fa-solid fa-moon icon-moon"></i>
+            <i class="fa-solid fa-sun icon-sun"></i>
+          </button>
+          <button class="icon-btn" type="button" aria-label="Notifications">
+            <i class="fa-regular fa-bell"></i>
+            <span class="dot"></span>
+          </button>
+          <a href="../public/index.html" class="icon-btn" target="_blank" rel="noopener"
+            aria-label="View the public website" title="View the public website">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+      </header>
+
+      <main class="admin-body">
+        <div class="page-head">
+          <div>
+            <h2>Settings</h2>
+            <p>Your account, security, the company profile and what the system notifies you about.</p>
+          </div>
+        </div>
+
+        <div class="row g-3">
+
+          <!-- Section nav -->
+          <div class="col-lg-3">
+            <div class="panel">
+              <div class="panel-body">
+                <nav class="settings-nav">
+                  <a href="#profile" class="active"><i class="fa-solid fa-user"></i> Profile</a>
+                  <a href="#security"><i class="fa-solid fa-lock"></i> Security</a>
+                  <a href="#company"><i class="fa-solid fa-building"></i> Company</a>
+                  <a href="#appearance"><i class="fa-solid fa-palette"></i> Appearance</a>
+                  <a href="#notifications"><i class="fa-solid fa-bell"></i> Notifications</a>
+                  <a href="#team"><i class="fa-solid fa-users-gear"></i> Team access</a>
+                </nav>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-9">
+
+            <!-- PROFILE -->
+            <div class="panel mb-3" id="profile">
+              <div class="panel-head"><div><h3>Profile</h3><p>How you appear inside the admin panel</p></div></div>
+              <form class="panel-body" data-demo="Profile saved." novalidate>
+
+                <div class="d-flex align-items-center gap-3 flex-wrap mb-4">
+                  <span class="avatar" style="width:72px;height:72px;font-size:1.5rem" id="avatarPreview">A</span>
+                  <div>
+                    <label for="avatarInput" class="btn btn-ghost btn-sm mb-1">
+                      <i class="fa-solid fa-camera me-1"></i> Change photo
+                    </label>
+                    <input type="file" id="avatarInput" accept="image/*" hidden>
+                    <div class="small text-muted-token">JPG or PNG, up to 2MB.</div>
+                  </div>
+                </div>
+
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label" for="sName">Full name</label>
+                    <input type="text" class="form-control" id="sName" value="Admin User" required>
+                    <div class="invalid-feedback">Enter your name.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="sEmail">Email address</label>
+                    <input type="email" class="form-control" id="sEmail" value="admin@iham.org.ng" required>
+                    <div class="invalid-feedback">Enter a valid email.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="sPhone">Phone number</label>
+                    <input type="tel" class="form-control" id="sPhone" value="+234 806 211 5796">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="sRole">Role</label>
+                    <input type="text" class="form-control" id="sRole" value="Administrator" disabled
+                      style="opacity:.62;cursor:not-allowed">
+                    <div class="form-text small">Only a super administrator can change this.</div>
+                  </div>
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Save profile</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <!-- SECURITY -->
+            <div class="panel mb-3" id="security">
+              <div class="panel-head"><div><h3>Security</h3><p>Password and sign-in protection</p></div></div>
+              <form class="panel-body" id="pwForm" novalidate>
+
+                <div class="row g-3">
+                  <div class="col-12">
+                    <label class="form-label" for="curPw">Current password</label>
+                    <div class="pw-wrap">
+                      <input type="password" class="form-control" id="curPw" required
+                        autocomplete="current-password" placeholder="••••••••••">
+                      <button class="pw-toggle" type="button" aria-label="Show password">
+                        <i class="fa-regular fa-eye"></i>
+                      </button>
+                    </div>
+                    <div class="invalid-feedback d-block d-none">Enter your current password.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label" for="newPw">New password</label>
+                    <div class="pw-wrap">
+                      <input type="password" class="form-control" id="newPw" required minlength="8"
+                        autocomplete="new-password" placeholder="••••••••••" data-strength="#setMeter">
+                      <button class="pw-toggle" type="button" aria-label="Show password">
+                        <i class="fa-regular fa-eye"></i>
+                      </button>
+                    </div>
+                    <div>
+                      <div class="pw-meter" id="setMeter"><span></span><span></span><span></span><span></span></div>
+                      <div class="pw-hint">Minimum 8 characters, with a number and a special character.</div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label" for="confPw">Confirm new password</label>
+                    <div class="pw-wrap">
+                      <input type="password" class="form-control" id="confPw" required
+                        autocomplete="new-password" placeholder="••••••••••">
+                      <button class="pw-toggle" type="button" aria-label="Show password">
+                        <i class="fa-regular fa-eye"></i>
+                      </button>
+                    </div>
+                    <div id="setMatch" class="small mt-2 d-none" style="color:var(--danger)">
+                      <i class="fa-solid fa-circle-exclamation me-1"></i> The two passwords do not match.
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Update password</button>
+                  </div>
+                </div>
+
+                <hr class="my-4" style="border-color:var(--border)">
+
+                <div class="switch-row">
+                  <div class="txt">
+                    <strong>Two-factor authentication</strong>
+                    <small>Require a code from your phone at every sign-in.</small>
+                  </div>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="twofa" role="switch">
+                  </div>
+                </div>
+
+                <div class="switch-row">
+                  <div class="txt">
+                    <strong>Sign out idle sessions</strong>
+                    <small>End a session automatically after 30 minutes of inactivity.</small>
+                  </div>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="idle" role="switch" checked>
+                  </div>
+                </div>
+
+                <div class="switch-row">
+                  <div class="txt">
+                    <strong>Alert on new device</strong>
+                    <small>Email me whenever my account signs in somewhere new.</small>
+                  </div>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="newdev" role="switch" checked>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <!-- COMPANY -->
+            <div class="panel mb-3" id="company">
+              <div class="panel-head"><div><h3>Company profile</h3><p>Shown across the public website</p></div></div>
+              <form class="panel-body" data-demo="Company details saved." novalidate>
+                <div class="row g-3">
+                  <div class="col-md-8">
+                    <label class="form-label" for="cName">Registered name</label>
+                    <input type="text" class="form-control" id="cName"
+                      value="Institute of Housing Administration & Management Ltd/Gte">
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label" for="cRc">RC number</label>
+                    <input type="text" class="form-control" id="cRc" placeholder="RC 0000000">
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label" for="cAddress">Head office address</label>
+                    <input type="text" class="form-control" id="cAddress"
+                      value="Plot 24, Ahmadu Bello Way, Garki II, Abuja, Nigeria">
+                    <div class="form-text small">This is what the Google map on the website points at.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="cPhone">Public phone</label>
+                    <input type="tel" class="form-control" id="cPhone" value="+234 806 211 5796">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="cWhatsapp">WhatsApp number</label>
+                    <input type="tel" class="form-control" id="cWhatsapp" value="+234 806 211 5796">
+                    <div class="form-text small">Inspection bookings and enquiries are sent here.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="cEmail">Public email</label>
+                    <input type="email" class="form-control" id="cEmail" value="info@iham.org.ng">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="cHours">Opening hours</label>
+                    <input type="text" class="form-control" id="cHours"
+                      value="Mon – Fri, 8:00am – 5:00pm">
+                  </div>
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Save company details</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <!-- APPEARANCE -->
+            <div class="panel mb-3" id="appearance">
+              <div class="panel-head"><div><h3>Appearance</h3><p>How the admin panel looks for you</p></div></div>
+              <div class="panel-body">
+                <div class="switch-row">
+                  <div class="txt">
+                    <strong>Colour theme</strong>
+                    <small>Applies to the admin panel and the public website on this device.</small>
+                  </div>
+                  <div class="seg" id="themeSeg">
+                    <button type="button" data-theme="light">
+                      <i class="fa-solid fa-sun me-1"></i> Light
+                    </button>
+                    <button type="button" data-theme="dark">
+                      <i class="fa-solid fa-moon me-1"></i> Dark
+                    </button>
+                    <button type="button" data-theme="system">
+                      <i class="fa-solid fa-circle-half-stroke me-1"></i> System
+                    </button>
+                  </div>
+                </div>
+
+                <div class="switch-row">
+                  <div class="txt">
+                    <strong>Compact tables</strong>
+                    <small>Fit more rows on screen by tightening row height.</small>
+                  </div>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="compact" role="switch">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- NOTIFICATIONS -->
+            <div class="panel mb-3" id="notifications">
+              <div class="panel-head"><div><h3>Notifications</h3><p>What the system tells you about</p></div></div>
+              <div class="panel-body">
+                <div class="switch-row">
+                  <div class="txt"><strong>New inspection booking</strong><small>Someone books a viewing on the website.</small></div>
+                  <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" checked></div>
+                </div>
+                <div class="switch-row">
+                  <div class="txt"><strong>Payment received</strong><small>A client posts a payment against a commitment.</small></div>
+                  <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" checked></div>
+                </div>
+                <div class="switch-row">
+                  <div class="txt"><strong>Payment overdue</strong><small>A client falls behind on an agreed plan.</small></div>
+                  <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" checked></div>
+                </div>
+                <div class="switch-row">
+                  <div class="txt"><strong>New training application</strong><small>Someone applies through the website.</small></div>
+                  <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" checked></div>
+                </div>
+                <div class="switch-row">
+                  <div class="txt"><strong>New enquiry</strong><small>A contact form message arrives.</small></div>
+                  <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch"></div>
+                </div>
+                <div class="switch-row">
+                  <div class="txt"><strong>Weekly summary</strong><small>A Monday digest of the week just gone.</small></div>
+                  <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" checked></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TEAM -->
+            <div class="panel" id="team">
+              <div class="panel-head">
+                <div><h3>Team access</h3><p>Who else can sign in here</p></div>
+                <button class="btn btn-primary btn-sm" type="button" data-demo-btn="Invite form opens here.">
+                  <i class="fa-solid fa-user-plus me-1"></i> Invite
+                </button>
+              </div>
+              <div class="panel-body flush">
+                <div class="table-wrap pt-3">
+                  <table class="table align-middle mb-0">
+                    <thead>
+                      <tr><th>Member</th><th>Role</th><th>Last active</th><th>Status</th><th>Actions</th></tr>
+                    </thead>
+                    <tbody id="teamRows"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </main>
+
+    </div>
+  </div>
+
+  <div class="toast-host"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../shared/theme.js"></script>
+  <script src="assets/js/admin-data.js"></script>
+  <script src="assets/js/admin.js"></script>
+  <script>
+    (function () {
+      var A = window.Admin;
+
+      /* --- Section nav highlight --- */
+      var links = document.querySelectorAll(".settings-nav a");
+      links.forEach(function (a) {
+        a.addEventListener("click", function () {
+          links.forEach(function (x) { x.classList.remove("active"); });
+          a.classList.add("active");
+        });
+      });
+
+      /* --- Avatar preview --- */
+      var input = document.getElementById("avatarInput");
+      input.addEventListener("change", function () {
+        var f = input.files && input.files[0];
+        if (!f) return;
+        if (f.size > 2 * 1024 * 1024) {
+          A.toast("That image is over 2MB.", "err");
+          input.value = "";
+          return;
+        }
+        var url = URL.createObjectURL(f);
+        document.getElementById("avatarPreview").innerHTML = '<img src="' + url + '" alt="">';
+      });
+
+      /* --- Password change --- */
+      document.getElementById("pwForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        var form = e.target;
+        var a = document.getElementById("newPw"), b = document.getElementById("confPw");
+        var mismatch = document.getElementById("setMatch");
+
+        if (!form.checkValidity()) { form.classList.add("was-validated"); return; }
+        if (a.value !== b.value) { mismatch.classList.remove("d-none"); b.focus(); return; }
+
+        mismatch.classList.add("d-none");
+        form.classList.remove("was-validated");
+        form.reset();
+        document.getElementById("setMeter").className = "pw-meter";
+        A.toast("Password updated.");
+      });
+
+      /* --- Theme segmented control, kept in step with the header toggle --- */
+      var seg = document.getElementById("themeSeg");
+      function markTheme() {
+        var stored = null;
+        try { stored = localStorage.getItem("iham-theme"); } catch (e) {}
+        var current = stored || "system";
+        seg.querySelectorAll("button").forEach(function (b) {
+          b.classList.toggle("active", b.dataset.theme === current);
+        });
+      }
+      markTheme();
+
+      seg.addEventListener("click", function (e) {
+        var b = e.target.closest("button");
+        if (!b) return;
+        var t = b.dataset.theme;
+        try {
+          if (t === "system") localStorage.removeItem("iham-theme");
+          else localStorage.setItem("iham-theme", t);
+        } catch (err) {}
+        var resolved = t === "system"
+          ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
+          : t;
+        window.IHAMTheme.apply(resolved);
+        markTheme();
+        A.toast("Theme set to " + t + ".");
+      });
+
+      window.addEventListener("ihamthemechange", markTheme);
+
+      /* --- Compact tables --- */
+      document.getElementById("compact").addEventListener("change", function (e) {
+        document.documentElement.style.setProperty(
+          "--table-pad", e.target.checked ? "8px" : "14px");
+        document.querySelectorAll("table.dataTable tbody td, .table tbody td").forEach(function (td) {
+          td.style.paddingTop = e.target.checked ? "8px" : "";
+          td.style.paddingBottom = e.target.checked ? "8px" : "";
+        });
+        A.toast(e.target.checked ? "Compact rows on." : "Compact rows off.");
+      });
+
+      /* --- Team --- */
+      var team = [
+        { name: "Admin User", email: "admin@iham.org.ng", role: "Administrator", active: "Right now", status: "Active" },
+        { name: "Sarah Adeyemi", email: "sarah@iham.org.ng", role: "Estate Manager", active: "2 hours ago", status: "Active" },
+        { name: "John Okafor", email: "john@iham.org.ng", role: "Training Lead", active: "Yesterday", status: "Active" },
+        { name: "Maya Ibrahim", email: "maya@iham.org.ng", role: "Client Relations", active: "3 days ago", status: "Active" },
+        { name: "Accounts Desk", email: "accounts@iham.org.ng", role: "Finance", active: "Never", status: "Pending" }
+      ];
+
+      document.getElementById("teamRows").innerHTML = team.map(function (m) {
+        return "<tr>" +
+          '<td><div class="cell-main"><span class="avatar" style="width:36px;height:36px;font-size:.74rem">' +
+            A.initials(m.name) + '</span><div class="cell-text"><strong>' + A.esc(m.name) + "</strong>" +
+            "<small>" + A.esc(m.email) + "</small></div></div></td>" +
+          '<td><span class="badge-soft neutral">' + A.esc(m.role) + "</span></td>" +
+          '<td><small style="color:var(--text-muted)">' + A.esc(m.active) + "</small></td>" +
+          "<td>" + A.statusBadge(m.status) + "</td>" +
+          "<td>" + A.rowActions([
+            { icon: "fa-pen", title: "Edit access" },
+            { icon: "fa-ban", title: "Revoke", danger: true }
+          ]) + "</td>" +
+        "</tr>";
+      }).join("");
+
+      document.addEventListener("click", function (e) {
+        var btn = e.target.closest(".row-btn");
+        if (btn) { A.toast(btn.getAttribute("title") + " — opens here."); return; }
+        var d = e.target.closest("[data-demo-btn]");
+        if (d) A.toast(d.dataset.demoBtn);
+      });
+    })();
+  </script>
+</body>
+
+</html>

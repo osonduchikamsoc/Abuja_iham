@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Property — IHAM Admin</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("iham-theme");
+        if (!t) t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) { }
+    })();
+  </script>
+
+  <link rel="icon" href="../public/assets/img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="../shared/theme.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+
+<body>
+
+  <div class="admin-shell">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="sidebar" id="sidebar">
+      <a href="index.html" class="sidebar-brand">
+        <img src="../public/assets/img/logo.png" alt="IHAM logo">
+        <span>
+          <strong>Institute of Housing Administration</strong>
+          <small>Admin Panel</small>
+        </span>
+      </a>
+
+      <nav class="sidebar-nav">
+        <div class="nav-label">Overview</div>
+        <a href="index.html" class="nav-item"><i class="fa-solid fa-chart-pie"></i><span>Dashboard</span></a>
+        <a href="insights.html" class="nav-item"><i class="fa-solid fa-lightbulb"></i><span>Insights</span></a>
+        <div class="nav-label">Portfolio</div>
+        <a href="properties.html" class="nav-item"><i class="fa-solid fa-building"></i><span>Properties</span><span class="pill">6</span></a>
+        <a href="property-upload.html" class="nav-item active" aria-current="page"><i class="fa-solid fa-cloud-arrow-up"></i><span>Upload Property</span></a>
+        <div class="nav-label">Sales</div>
+        <a href="clients.html" class="nav-item"><i class="fa-solid fa-users"></i><span>Clients</span><span class="pill">12</span></a>
+        <a href="payments.html" class="nav-item"><i class="fa-solid fa-money-bill-transfer"></i><span>Payments</span></a>
+        <a href="realtors.html" class="nav-item"><i class="fa-solid fa-user-tie"></i><span>Realtors</span><span class="pill">7</span></a>
+        <a href="inspections.html" class="nav-item"><i class="fa-solid fa-calendar-check"></i><span>Inspections</span><span class="pill">4</span></a>
+        <div class="nav-label">Training</div>
+        <a href="trainees.html" class="nav-item"><i class="fa-solid fa-user-graduate"></i><span>Trainees</span><span class="pill">8</span></a>
+        <a href="training-applications.html" class="nav-item"><i class="fa-solid fa-file-signature"></i><span>Applications</span><span class="pill">2</span></a>
+        <div class="nav-label">Communication</div>
+        <a href="enquiries.html" class="nav-item"><i class="fa-solid fa-inbox"></i><span>Enquiries</span><span class="pill">2</span></a>
+        <a href="messaging.html" class="nav-item"><i class="fa-solid fa-paper-plane"></i><span>Bulk Messages</span></a>
+        <div class="nav-label">Account</div>
+        <a href="settings.html" class="nav-item"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+      </nav>
+
+      <div class="sidebar-foot">
+        <a href="settings.html" class="sidebar-user">
+          <span class="avatar">A</span>
+          <span class="who">
+            <strong>Admin User</strong>
+            <small>Administrator</small>
+          </span>
+        </a>
+        <a href="#" data-logout class="sidebar-user mt-1">
+          <span class="avatar" style="background:var(--bg-inset);color:var(--text-muted)">
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </span>
+          <span class="who"><strong>Sign out</strong></span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- ============ MAIN ============ -->
+    <div class="admin-main">
+
+      <header class="topbar">
+        <button class="sidebar-toggle" type="button" aria-label="Open navigation"
+          aria-expanded="false" aria-controls="sidebar">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <h1>Upload Property</h1>
+
+        <div class="topbar-actions">
+          <button class="theme-toggle" type="button" aria-label="Switch colour theme" aria-pressed="false">
+            <i class="fa-solid fa-moon icon-moon"></i>
+            <i class="fa-solid fa-sun icon-sun"></i>
+          </button>
+          <button class="icon-btn" type="button" aria-label="Notifications">
+            <i class="fa-regular fa-bell"></i>
+            <span class="dot"></span>
+          </button>
+          <a href="../public/index.html" class="icon-btn" target="_blank" rel="noopener"
+            aria-label="View the public website" title="View the public website">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+      </header>
+
+      <main class="admin-body">
+        <div class="page-head">
+          <div>
+            <h2>Upload a property</h2>
+            <p>Add a listing to the public website. Land and property take different fields.</p>
+          </div>
+          <div class="actions">
+            <a href="properties.html" class="btn btn-ghost">
+              <i class="fa-solid fa-arrow-left me-1"></i> Back to portfolio
+            </a>
+          </div>
+        </div>
+
+        <form id="uploadForm" novalidate>
+          <div class="row g-3">
+
+            <div class="col-xl-8">
+              <div class="panel mb-3">
+                <div class="form-section">
+                  <h4>What are you listing?</h4>
+                  <p class="hint">This decides which fields the website shows on the listing page.</p>
+                  <div class="seg" id="typeSeg">
+                    <button type="button" class="active" data-kind="property">
+                      <i class="fa-solid fa-house me-1"></i> Property for sale
+                    </button>
+                    <button type="button" data-kind="land">
+                      <i class="fa-solid fa-map-location-dot me-1"></i> Land investment
+                    </button>
+                  </div>
+                </div>
+
+                <div class="form-section">
+                  <h4>Basic details</h4>
+                  <p class="hint">What a buyer sees first.</p>
+
+                  <div class="row g-3">
+                    <div class="col-md-8">
+                      <label class="form-label" for="pTitle">Listing title <span class="text-danger">*</span></label>
+                      <input type="text" class="form-control" id="pTitle" required
+                        placeholder="e.g. Luxury 4 Bedroom Detached Duplex">
+                      <div class="invalid-feedback">Give the listing a title.</div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <label class="form-label" for="pCategory">Category <span class="text-danger">*</span></label>
+                      <select class="form-select" id="pCategory" required>
+                        <option value="">Select</option>
+                        <optgroup label="Property" data-kind="property">
+                          <option>Residential</option>
+                          <option>Commercial</option>
+                        </optgroup>
+                        <optgroup label="Land" data-kind="land">
+                          <option>Residential Land</option>
+                          <option>Investment Land</option>
+                        </optgroup>
+                      </select>
+                      <div class="invalid-feedback">Pick a category.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="pState">State <span class="text-danger">*</span></label>
+                      <select class="form-select" id="pState" required>
+                        <option value="">Select state</option>
+                        <option>FCT — Abuja</option><option>Lagos</option><option>Rivers</option>
+                        <option>Ogun</option><option>Oyo</option><option>Enugu</option>
+                        <option>Kaduna</option><option>Kano</option><option>Anambra</option>
+                        <option>Delta</option><option>Edo</option><option>Nasarawa</option>
+                      </select>
+                      <div class="invalid-feedback">Select the state.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="pArea">Area / Estate <span class="text-danger">*</span></label>
+                      <input type="text" class="form-control" id="pArea" required placeholder="e.g. Gwarinpa Estate">
+                      <div class="invalid-feedback">Where is it?</div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="pPrice">
+                        Price (₦) <span class="text-danger">*</span>
+                        <span class="text-muted-token fw-normal" data-land-only style="display:none">per plot</span>
+                      </label>
+                      <input type="number" class="form-control" id="pPrice" required min="0" placeholder="85000000">
+                      <div class="invalid-feedback">Enter the asking price.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label" for="pStatus">Status</label>
+                      <select class="form-select" id="pStatus">
+                        <option>Available</option>
+                        <option>Selling Fast</option>
+                        <option>Under Offer</option>
+                        <option>Sold</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Property-specific -->
+                <div class="form-section" data-fields="property">
+                  <h4>Property specification</h4>
+                  <p class="hint">Shown as the spec tiles on the listing page.</p>
+                  <div class="row g-3">
+                    <div class="col-6 col-md-3">
+                      <label class="form-label" for="pBeds">Bedrooms</label>
+                      <input type="number" class="form-control" id="pBeds" min="0" placeholder="4">
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <label class="form-label" for="pBaths">Bathrooms</label>
+                      <input type="number" class="form-control" id="pBaths" min="0" placeholder="5">
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <label class="form-label" for="pSize">Land size</label>
+                      <input type="text" class="form-control" id="pSize" placeholder="480 sqm">
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <label class="form-label" for="pParking">Parking</label>
+                      <input type="number" class="form-control" id="pParking" min="0" placeholder="4">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Land-specific -->
+                <div class="form-section" data-fields="land" style="display:none">
+                  <h4>Land &amp; allocation</h4>
+                  <p class="hint">What an investor is actually buying.</p>
+                  <div class="row g-3">
+                    <div class="col-6 col-md-3">
+                      <label class="form-label" for="pPlotSize">Plot size</label>
+                      <input type="text" class="form-control" id="pPlotSize" placeholder="500 sqm">
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <label class="form-label" for="pUnits">Plots available</label>
+                      <input type="number" class="form-control" id="pUnits" min="0" placeholder="42">
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <label class="form-label" for="pPlan">Payment plan</label>
+                      <select class="form-select" id="pPlan">
+                        <option>Outright only</option>
+                        <option>Up to 6 months</option>
+                        <option>Up to 12 months</option>
+                        <option>Up to 18 months</option>
+                        <option>Up to 24 months</option>
+                      </select>
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <label class="form-label" for="pRoi">Projected ROI</label>
+                      <input type="text" class="form-control" id="pRoi" placeholder="35% in 24 months">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-section">
+                  <h4>Description</h4>
+                  <p class="hint">Leave a blank line between paragraphs.</p>
+                  <div class="mb-3">
+                    <label class="form-label" for="pSummary">Short summary <span class="text-danger">*</span></label>
+                    <textarea class="form-control" id="pSummary" rows="2" required
+                      placeholder="One or two sentences that appear at the top of the listing."></textarea>
+                    <div class="invalid-feedback">Write a short summary.</div>
+                  </div>
+                  <div>
+                    <label class="form-label" for="pDesc">Full description</label>
+                    <textarea class="form-control" id="pDesc" rows="6"
+                      placeholder="The detail a serious buyer wants — condition, infrastructure, what transfers with the sale."></textarea>
+                  </div>
+                </div>
+
+                <div class="form-section">
+                  <h4>Features</h4>
+                  <p class="hint">One per line. These render as the ticked list.</p>
+                  <textarea class="form-control" id="pFeatures" rows="5"
+                    placeholder="All rooms en-suite&#10;Fitted kitchen with pantry&#10;Borehole + treatment plant"></textarea>
+                </div>
+
+                <div class="form-section">
+                  <h4>Title &amp; documentation</h4>
+                  <p class="hint">Only list documents you actually hold.</p>
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label" for="pTitleDoc">Primary title</label>
+                      <select class="form-select" id="pTitleDoc">
+                        <option>Certificate of Occupancy (C of O)</option>
+                        <option>Governor's Consent</option>
+                        <option>Registered Survey + Deed of Assignment</option>
+                        <option>Excision in Progress</option>
+                        <option>Gazette</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Documents held</label>
+                      <div class="d-flex flex-wrap gap-3 pt-1">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="dSurvey" checked>
+                          <label class="form-check-label small" for="dSurvey">Survey</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="dDeed" checked>
+                          <label class="form-check-label small" for="dDeed">Deed</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="dApproval">
+                          <label class="form-check-label small" for="dApproval">Building approval</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="dLayout">
+                          <label class="form-check-label small" for="dLayout">Estate layout</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SIDE: images + publish -->
+            <div class="col-xl-4">
+              <div class="panel mb-3">
+                <div class="panel-head"><div><h3>Photographs</h3><p>First image becomes the cover</p></div></div>
+                <div class="panel-body">
+                  <label class="dropzone" id="dropzone" for="fileInput">
+                    <i class="fa-solid fa-cloud-arrow-up big"></i>
+                    <h4>Drop images here</h4>
+                    <p>or click to browse · JPG, PNG, WEBP</p>
+                    <input type="file" id="fileInput" multiple accept="image/*">
+                  </label>
+
+                  <div class="thumb-grid" id="thumbGrid"></div>
+
+                  <div class="d-flex justify-content-between align-items-center mt-3 small text-muted-token">
+                    <span id="imgCount">0 images</span>
+                    <button type="button" class="btn btn-ghost btn-sm" id="clearImgs">Clear all</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel mb-3">
+                <div class="panel-head"><div><h3>Assign</h3></div></div>
+                <div class="panel-body">
+                  <div class="mb-3">
+                    <label class="form-label" for="pRealtor">Listing realtor</label>
+                    <select class="form-select" id="pRealtor"></select>
+                  </div>
+                  <div>
+                    <label class="form-label" for="pMap">Map location</label>
+                    <input type="text" class="form-control" id="pMap" placeholder="Gwarinpa Estate, Abuja, Nigeria">
+                    <div class="form-text small">Used for the Google map on the listing page.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel">
+                <div class="panel-body">
+                  <button type="submit" class="btn btn-primary btn-lg w-100 mb-2" name="publish">
+                    <i class="fa-solid fa-upload me-1"></i> Publish listing
+                  </button>
+                  <button type="button" class="btn btn-ghost w-100" id="saveDraft">Save as draft</button>
+                  <p class="small text-muted-token mt-3 mb-0">
+                    Publishing makes this visible on the public website immediately.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </form>
+
+      </main>
+
+    </div>
+  </div>
+
+  <div class="toast-host"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../shared/theme.js"></script>
+  <script src="assets/js/admin-data.js"></script>
+  <script src="assets/js/admin.js"></script>
+  <script>
+    (function () {
+      var A = window.Admin;
+
+      /* Realtor dropdown from the roster */
+      document.getElementById("pRealtor").innerHTML =
+        '<option value="">Unassigned</option>' +
+        window.ADMIN_REALTORS.map(function (r) {
+          return '<option value="' + r.id + '">' + A.esc(r.name) + " — " + A.esc(r.zone) + "</option>";
+        }).join("");
+
+      /* Property vs land switches which fieldsets show */
+      var kind = "property";
+      function applyKind(k) {
+        kind = k;
+        document.querySelectorAll("[data-fields]").forEach(function (el) {
+          el.style.display = el.dataset.fields === k ? "" : "none";
+        });
+        document.querySelectorAll("[data-land-only]").forEach(function (el) {
+          el.style.display = k === "land" ? "" : "none";
+        });
+        // Only offer categories that belong to this kind
+        document.querySelectorAll("#pCategory optgroup").forEach(function (g) {
+          g.hidden = g.dataset.kind !== k;
+        });
+        document.getElementById("pCategory").value = "";
+      }
+      applyKind("property");
+
+      document.querySelectorAll("#typeSeg button").forEach(function (b) {
+        b.addEventListener("click", function () {
+          document.querySelectorAll("#typeSeg button").forEach(function (x) { x.classList.remove("active"); });
+          b.classList.add("active");
+          applyKind(b.dataset.kind);
+        });
+      });
+
+      /* ---- Image staging (real, working) ---- */
+      var files = [];
+      var grid = document.getElementById("thumbGrid");
+      var input = document.getElementById("fileInput");
+      var zone = document.getElementById("dropzone");
+
+      function render() {
+        grid.innerHTML = files.map(function (f, i) {
+          return '<div class="thumb"><img src="' + f.url + '" alt="">' +
+            '<button class="rm" type="button" data-i="' + i + '" aria-label="Remove image">' +
+            '<i class="fa-solid fa-xmark"></i></button>' +
+            (i === 0 ? '<span class="cover-tag">Cover</span>' : "") + "</div>";
+        }).join("");
+        document.getElementById("imgCount").textContent =
+          files.length + (files.length === 1 ? " image" : " images");
+      }
+
+      function add(list) {
+        Array.prototype.forEach.call(list, function (f) {
+          if (!f.type.startsWith("image/")) return;
+          files.push({ file: f, url: URL.createObjectURL(f) });
+        });
+        render();
+      }
+
+      input.addEventListener("change", function () { add(input.files); input.value = ""; });
+
+      ["dragenter", "dragover"].forEach(function (ev) {
+        zone.addEventListener(ev, function (e) { e.preventDefault(); zone.classList.add("drag"); });
+      });
+      ["dragleave", "drop"].forEach(function (ev) {
+        zone.addEventListener(ev, function (e) { e.preventDefault(); zone.classList.remove("drag"); });
+      });
+      zone.addEventListener("drop", function (e) { add(e.dataTransfer.files); });
+
+      grid.addEventListener("click", function (e) {
+        var btn = e.target.closest(".rm");
+        if (!btn) return;
+        var i = Number(btn.dataset.i);
+        URL.revokeObjectURL(files[i].url);
+        files.splice(i, 1);
+        render();
+      });
+
+      document.getElementById("clearImgs").addEventListener("click", function () {
+        files.forEach(function (f) { URL.revokeObjectURL(f.url); });
+        files = [];
+        render();
+      });
+
+      /* ---- Submit ---- */
+      document.getElementById("uploadForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        var form = e.target;
+        if (!form.checkValidity()) {
+          form.classList.add("was-validated");
+          var bad = form.querySelector(":invalid");
+          if (bad) bad.scrollIntoView({ behavior: "smooth", block: "center" });
+          return;
+        }
+        if (!files.length) {
+          A.toast("Add at least one photograph before publishing.", "err");
+          document.getElementById("dropzone").scrollIntoView({ behavior: "smooth", block: "center" });
+          return;
+        }
+        form.classList.remove("was-validated");
+        A.toast("Listing published to the website.");
+      });
+
+      document.getElementById("saveDraft").addEventListener("click", function () {
+        A.toast("Saved as a draft.");
+      });
+    })();
+  </script>
+</body>
+
+</html>

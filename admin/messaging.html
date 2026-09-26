@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bulk Messages — IHAM Admin</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("iham-theme");
+        if (!t) t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) { }
+    })();
+  </script>
+
+  <link rel="icon" href="../public/assets/img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="../shared/theme.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+
+<body>
+
+  <div class="admin-shell">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="sidebar" id="sidebar">
+      <a href="index.html" class="sidebar-brand">
+        <img src="../public/assets/img/logo.png" alt="IHAM logo">
+        <span>
+          <strong>Institute of Housing Administration</strong>
+          <small>Admin Panel</small>
+        </span>
+      </a>
+
+      <nav class="sidebar-nav">
+        <div class="nav-label">Overview</div>
+        <a href="index.html" class="nav-item"><i class="fa-solid fa-chart-pie"></i><span>Dashboard</span></a>
+        <a href="insights.html" class="nav-item"><i class="fa-solid fa-lightbulb"></i><span>Insights</span></a>
+        <div class="nav-label">Portfolio</div>
+        <a href="properties.html" class="nav-item"><i class="fa-solid fa-building"></i><span>Properties</span><span class="pill">6</span></a>
+        <a href="property-upload.html" class="nav-item"><i class="fa-solid fa-cloud-arrow-up"></i><span>Upload Property</span></a>
+        <div class="nav-label">Sales</div>
+        <a href="clients.html" class="nav-item"><i class="fa-solid fa-users"></i><span>Clients</span><span class="pill">12</span></a>
+        <a href="payments.html" class="nav-item"><i class="fa-solid fa-money-bill-transfer"></i><span>Payments</span></a>
+        <a href="realtors.html" class="nav-item"><i class="fa-solid fa-user-tie"></i><span>Realtors</span><span class="pill">7</span></a>
+        <a href="inspections.html" class="nav-item"><i class="fa-solid fa-calendar-check"></i><span>Inspections</span><span class="pill">4</span></a>
+        <div class="nav-label">Training</div>
+        <a href="trainees.html" class="nav-item"><i class="fa-solid fa-user-graduate"></i><span>Trainees</span><span class="pill">8</span></a>
+        <a href="training-applications.html" class="nav-item"><i class="fa-solid fa-file-signature"></i><span>Applications</span><span class="pill">2</span></a>
+        <div class="nav-label">Communication</div>
+        <a href="enquiries.html" class="nav-item"><i class="fa-solid fa-inbox"></i><span>Enquiries</span><span class="pill">2</span></a>
+        <a href="messaging.html" class="nav-item active" aria-current="page"><i class="fa-solid fa-paper-plane"></i><span>Bulk Messages</span></a>
+        <div class="nav-label">Account</div>
+        <a href="settings.html" class="nav-item"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+      </nav>
+
+      <div class="sidebar-foot">
+        <a href="settings.html" class="sidebar-user">
+          <span class="avatar">A</span>
+          <span class="who">
+            <strong>Admin User</strong>
+            <small>Administrator</small>
+          </span>
+        </a>
+        <a href="#" data-logout class="sidebar-user mt-1">
+          <span class="avatar" style="background:var(--bg-inset);color:var(--text-muted)">
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </span>
+          <span class="who"><strong>Sign out</strong></span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- ============ MAIN ============ -->
+    <div class="admin-main">
+
+      <header class="topbar">
+        <button class="sidebar-toggle" type="button" aria-label="Open navigation"
+          aria-expanded="false" aria-controls="sidebar">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <h1>Bulk Messages</h1>
+
+        <div class="topbar-actions">
+          <button class="theme-toggle" type="button" aria-label="Switch colour theme" aria-pressed="false">
+            <i class="fa-solid fa-moon icon-moon"></i>
+            <i class="fa-solid fa-sun icon-sun"></i>
+          </button>
+          <button class="icon-btn" type="button" aria-label="Notifications">
+            <i class="fa-regular fa-bell"></i>
+            <span class="dot"></span>
+          </button>
+          <a href="../public/index.html" class="icon-btn" target="_blank" rel="noopener"
+            aria-label="View the public website" title="View the public website">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+      </header>
+
+      <main class="admin-body">
+        <div class="page-head">
+          <div>
+            <h2>Bulk messages</h2>
+            <p>Send to realtors, trainees, clients or applicants — by email, SMS or WhatsApp.</p>
+          </div>
+          <div class="actions">
+            <button class="btn btn-ghost" type="button" data-demo-btn="Message history opens here.">
+              <i class="fa-solid fa-clock-rotate-left me-1"></i> History
+            </button>
+          </div>
+        </div>
+
+        <div class="row g-3">
+
+          <div class="col-xl-8">
+            <form id="composeForm" novalidate>
+              <div class="panel mb-3">
+
+                <div class="form-section">
+                  <h4>Who is this going to?</h4>
+                  <p class="hint">Pick one or more groups. The count updates as you choose.</p>
+                  <div class="chip-row" id="audienceChips"></div>
+                </div>
+
+                <div class="form-section">
+                  <h4>How should it be sent?</h4>
+                  <p class="hint">WhatsApp and SMS are charged per recipient.</p>
+                  <div class="chip-row" id="channelChips">
+                    <button type="button" class="chip on" data-channel="email">
+                      <i class="fa-solid fa-envelope"></i> Email
+                    </button>
+                    <button type="button" class="chip" data-channel="sms">
+                      <i class="fa-solid fa-comment-sms"></i> SMS
+                    </button>
+                    <button type="button" class="chip" data-channel="whatsapp">
+                      <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                    </button>
+                  </div>
+                </div>
+
+                <div class="form-section">
+                  <h4>Message</h4>
+                  <p class="hint">
+                    Use <code>{name}</code> to insert each recipient's first name.
+                  </p>
+
+                  <div class="mb-3" id="subjectWrap">
+                    <label class="form-label" for="msgSubject">Subject <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="msgSubject" required
+                      placeholder="e.g. October intake starts in two weeks">
+                    <div class="invalid-feedback">Give the message a subject.</div>
+                  </div>
+
+                  <div>
+                    <label class="form-label" for="msgBody">Body <span class="text-danger">*</span></label>
+                    <textarea class="form-control" id="msgBody" rows="9" required
+                      placeholder="Hello {name},&#10;&#10;..."></textarea>
+                    <div class="invalid-feedback">Write the message.</div>
+                    <div class="d-flex justify-content-between mt-2 small text-muted-token">
+                      <span id="charCount">0 characters</span>
+                      <span id="smsParts"></span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-section">
+                  <h4>When?</h4>
+                  <div class="row g-3 align-items-end">
+                    <div class="col-md-5">
+                      <label class="form-label" for="sendWhen">Delivery</label>
+                      <select class="form-select" id="sendWhen">
+                        <option value="now">Send immediately</option>
+                        <option value="later">Schedule for later</option>
+                      </select>
+                    </div>
+                    <div class="col-md-4" id="whenDate" style="display:none">
+                      <label class="form-label" for="sendDate">Date</label>
+                      <input type="date" class="form-control" id="sendDate">
+                    </div>
+                    <div class="col-md-3" id="whenTime" style="display:none">
+                      <label class="form-label" for="sendTime">Time</label>
+                      <input type="time" class="form-control" id="sendTime" value="09:00">
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </form>
+          </div>
+
+          <!-- SIDE -->
+          <div class="col-xl-4">
+            <div class="panel mb-3">
+              <div class="panel-head"><div><h3>Preview</h3><p>As the first recipient will see it</p></div></div>
+              <div class="panel-body">
+                <div class="mb-2 small text-muted-token">
+                  <strong style="color:var(--text)" id="previewTo">No recipients selected</strong>
+                </div>
+                <div class="compose-preview" id="preview">Your message will appear here.</div>
+              </div>
+            </div>
+
+            <div class="panel mb-3">
+              <div class="panel-head"><div><h3>Summary</h3></div></div>
+              <div class="panel-body">
+                <div class="switch-row">
+                  <div class="txt"><strong>Recipients</strong><small>Unique people</small></div>
+                  <div style="font-family:var(--font-display);font-size:1.5rem;font-weight:600" id="sumCount">0</div>
+                </div>
+                <div class="switch-row">
+                  <div class="txt"><strong>Channels</strong><small>Delivery methods</small></div>
+                  <div id="sumChannels" style="font-size:.85rem;font-weight:600">Email</div>
+                </div>
+                <div class="switch-row">
+                  <div class="txt"><strong>Estimated cost</strong><small>SMS and WhatsApp only</small></div>
+                  <div style="font-weight:700;color:var(--accent)" id="sumCost">₦0</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel">
+              <div class="panel-body">
+                <button type="submit" form="composeForm" class="btn btn-primary btn-lg w-100 mb-2">
+                  <i class="fa-solid fa-paper-plane me-1"></i> Send message
+                </button>
+                <button type="button" class="btn btn-ghost w-100" id="saveTemplate">Save as template</button>
+                <p class="small text-muted-token mt-3 mb-0">
+                  Messages cannot be recalled once sent. Check the preview first.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </main>
+
+    </div>
+  </div>
+
+  <div class="toast-host"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../shared/theme.js"></script>
+  <script src="assets/js/admin-data.js"></script>
+  <script src="assets/js/admin.js"></script>
+  <script>
+    (function () {
+      var A = window.Admin;
+
+      var GROUPS = [
+        { id: "realtors",  label: "Realtors",             icon: "fa-user-tie",        list: window.ADMIN_REALTORS },
+        { id: "clients",   label: "Clients",              icon: "fa-users",           list: window.ADMIN_CLIENTS },
+        { id: "trainees",  label: "Trainees",             icon: "fa-user-graduate",   list: window.ADMIN_TRAINEES },
+        { id: "applicants",label: "Training applicants",  icon: "fa-file-signature",  list: window.ADMIN_APPLICATIONS },
+        { id: "behind",    label: "Clients behind on payment", icon: "fa-triangle-exclamation",
+          list: window.ADMIN_CLIENTS.filter(function (c) { return c.status === "Behind"; }) },
+        { id: "inspections", label: "Inspection visitors", icon: "fa-calendar-check", list: window.ADMIN_INSPECTIONS }
+      ];
+
+      var selected = {};
+      var channels = { email: true, sms: false, whatsapp: false };
+
+      document.getElementById("audienceChips").innerHTML = GROUPS.map(function (g) {
+        return '<button type="button" class="chip" data-group="' + g.id + '">' +
+          '<i class="fa-solid ' + g.icon + '"></i> ' + g.label +
+          '<span class="n">' + g.list.length + "</span></button>";
+      }).join("");
+
+      function recipients() {
+        var names = [];
+        GROUPS.forEach(function (g) {
+          if (selected[g.id]) g.list.forEach(function (p) { if (p.name) names.push(p.name); });
+        });
+        // De-duplicate — someone can be both a client and a trainee
+        return names.filter(function (n, i) { return names.indexOf(n) === i; });
+      }
+
+      function update() {
+        var people = recipients();
+        var chans = Object.keys(channels).filter(function (c) { return channels[c]; });
+
+        document.getElementById("sumCount").textContent = people.length;
+        document.getElementById("sumChannels").textContent = chans.length
+          ? chans.map(function (c) { return c === "sms" ? "SMS" : c === "whatsapp" ? "WhatsApp" : "Email"; }).join(", ")
+          : "None";
+
+        // SMS ₦4/part, WhatsApp ₦6 each — email free
+        var body = document.getElementById("msgBody").value;
+        var parts = Math.max(1, Math.ceil(body.length / 160));
+        var cost = 0;
+        if (channels.sms) cost += people.length * 4 * parts;
+        if (channels.whatsapp) cost += people.length * 6;
+        document.getElementById("sumCost").textContent = A.money(cost);
+
+        document.getElementById("charCount").textContent =
+          body.length + (body.length === 1 ? " character" : " characters");
+        document.getElementById("smsParts").textContent =
+          channels.sms ? parts + (parts === 1 ? " SMS part" : " SMS parts") : "";
+
+        var first = people[0] || "Recipient";
+        document.getElementById("previewTo").textContent = people.length
+          ? "To: " + first + (people.length > 1 ? " and " + (people.length - 1) + " others" : "")
+          : "No recipients selected";
+
+        var preview = body || "Your message will appear here.";
+        document.getElementById("preview").textContent =
+          preview.replace(/\{name\}/g, first.split(" ")[0]);
+
+        // Subject only matters for email
+        document.getElementById("subjectWrap").style.display = channels.email ? "" : "none";
+        document.getElementById("msgSubject").required = !!channels.email;
+      }
+
+      document.getElementById("audienceChips").addEventListener("click", function (e) {
+        var chip = e.target.closest(".chip");
+        if (!chip) return;
+        var id = chip.dataset.group;
+        selected[id] = !selected[id];
+        chip.classList.toggle("on", selected[id]);
+        update();
+      });
+
+      document.getElementById("channelChips").addEventListener("click", function (e) {
+        var chip = e.target.closest(".chip");
+        if (!chip) return;
+        var c = chip.dataset.channel;
+        channels[c] = !channels[c];
+        chip.classList.toggle("on", channels[c]);
+        update();
+      });
+
+      document.getElementById("msgBody").addEventListener("input", update);
+      document.getElementById("msgSubject").addEventListener("input", update);
+
+      document.getElementById("sendWhen").addEventListener("change", function (e) {
+        var later = e.target.value === "later";
+        document.getElementById("whenDate").style.display = later ? "" : "none";
+        document.getElementById("whenTime").style.display = later ? "" : "none";
+        if (later) {
+          var t = new Date(); t.setDate(t.getDate() + 1);
+          document.getElementById("sendDate").value = t.toISOString().split("T")[0];
+          document.getElementById("sendDate").min = new Date().toISOString().split("T")[0];
+        }
+      });
+
+      document.getElementById("composeForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        var form = e.target;
+        var people = recipients();
+
+        if (!people.length) {
+          A.toast("Choose at least one group to send to.", "err");
+          return;
+        }
+        if (!Object.keys(channels).some(function (c) { return channels[c]; })) {
+          A.toast("Choose at least one delivery channel.", "err");
+          return;
+        }
+        if (!form.checkValidity()) {
+          form.classList.add("was-validated");
+          // The invalid field is often scrolled out of view behind the
+          // preview panel, so say what is wrong and jump to it.
+          var bad = form.querySelector(":invalid");
+          if (bad) {
+            bad.scrollIntoView({ behavior: "smooth", block: "center" });
+            bad.focus({ preventScroll: true });
+          }
+          A.toast(
+            bad && bad.id === "msgSubject"
+              ? "Add a subject line for the email."
+              : "Fill in the message before sending.",
+            "err"
+          );
+          return;
+        }
+
+        form.classList.remove("was-validated");
+        var when = document.getElementById("sendWhen").value;
+        A.toast(
+          when === "later"
+            ? "Scheduled for " + people.length + " recipients."
+            : "Sending to " + people.length + " recipients."
+        );
+      });
+
+      document.getElementById("saveTemplate").addEventListener("click", function () {
+        A.toast("Saved as a reusable template.");
+      });
+
+      document.addEventListener("click", function (e) {
+        var d = e.target.closest("[data-demo-btn]");
+        if (d) A.toast(d.dataset.demoBtn);
+      });
+
+      update();
+    })();
+  </script>
+</body>
+
+</html>

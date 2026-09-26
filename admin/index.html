@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — IHAM Admin</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("iham-theme");
+        if (!t) t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) { }
+    })();
+  </script>
+
+  <link rel="icon" href="../public/assets/img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap5.min.css">
+  <link rel="stylesheet" href="../shared/theme.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+
+<body>
+
+  <div class="admin-shell">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="sidebar" id="sidebar">
+      <a href="index.html" class="sidebar-brand">
+        <img src="../public/assets/img/logo.png" alt="IHAM logo">
+        <span>
+          <strong>Institute of Housing Administration</strong>
+          <small>Admin Panel</small>
+        </span>
+      </a>
+
+      <nav class="sidebar-nav">
+        <div class="nav-label">Overview</div>
+        <a href="index.html" class="nav-item active" aria-current="page"><i class="fa-solid fa-chart-pie"></i><span>Dashboard</span></a>
+        <a href="insights.html" class="nav-item"><i class="fa-solid fa-lightbulb"></i><span>Insights</span></a>
+        <div class="nav-label">Portfolio</div>
+        <a href="properties.html" class="nav-item"><i class="fa-solid fa-building"></i><span>Properties</span><span class="pill">6</span></a>
+        <a href="property-upload.html" class="nav-item"><i class="fa-solid fa-cloud-arrow-up"></i><span>Upload Property</span></a>
+        <div class="nav-label">Sales</div>
+        <a href="clients.html" class="nav-item"><i class="fa-solid fa-users"></i><span>Clients</span><span class="pill">12</span></a>
+        <a href="payments.html" class="nav-item"><i class="fa-solid fa-money-bill-transfer"></i><span>Payments</span></a>
+        <a href="realtors.html" class="nav-item"><i class="fa-solid fa-user-tie"></i><span>Realtors</span><span class="pill">7</span></a>
+        <a href="inspections.html" class="nav-item"><i class="fa-solid fa-calendar-check"></i><span>Inspections</span><span class="pill">4</span></a>
+        <div class="nav-label">Training</div>
+        <a href="trainees.html" class="nav-item"><i class="fa-solid fa-user-graduate"></i><span>Trainees</span><span class="pill">8</span></a>
+        <a href="training-applications.html" class="nav-item"><i class="fa-solid fa-file-signature"></i><span>Applications</span><span class="pill">2</span></a>
+        <div class="nav-label">Communication</div>
+        <a href="enquiries.html" class="nav-item"><i class="fa-solid fa-inbox"></i><span>Enquiries</span><span class="pill">2</span></a>
+        <a href="messaging.html" class="nav-item"><i class="fa-solid fa-paper-plane"></i><span>Bulk Messages</span></a>
+        <div class="nav-label">Account</div>
+        <a href="settings.html" class="nav-item"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+      </nav>
+
+      <div class="sidebar-foot">
+        <a href="settings.html" class="sidebar-user">
+          <span class="avatar">A</span>
+          <span class="who">
+            <strong>Admin User</strong>
+            <small>Administrator</small>
+          </span>
+        </a>
+        <a href="#" data-logout class="sidebar-user mt-1">
+          <span class="avatar" style="background:var(--bg-inset);color:var(--text-muted)">
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </span>
+          <span class="who"><strong>Sign out</strong></span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- ============ MAIN ============ -->
+    <div class="admin-main">
+
+      <header class="topbar">
+        <button class="sidebar-toggle" type="button" aria-label="Open navigation"
+          aria-expanded="false" aria-controls="sidebar">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <h1>Dashboard</h1>
+
+        <div class="topbar-actions">
+          <button class="theme-toggle" type="button" aria-label="Switch colour theme" aria-pressed="false">
+            <i class="fa-solid fa-moon icon-moon"></i>
+            <i class="fa-solid fa-sun icon-sun"></i>
+          </button>
+          <button class="icon-btn" type="button" aria-label="Notifications">
+            <i class="fa-regular fa-bell"></i>
+            <span class="dot"></span>
+          </button>
+          <a href="../public/index.html" class="icon-btn" target="_blank" rel="noopener"
+            aria-label="View the public website" title="View the public website">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+      </header>
+
+      <main class="admin-body">
+        <div class="page-head">
+          <div>
+            <h2>Good morning, Admin</h2>
+            <p>Here is where the business stands today, <span id="todayDate"></span>.</p>
+          </div>
+          <div class="actions">
+            <a href="property-upload.html" class="btn btn-primary">
+              <i class="fa-solid fa-plus me-1"></i> Add Property
+            </a>
+            <a href="insights.html" class="btn btn-ghost">
+              <i class="fa-solid fa-lightbulb me-1"></i> Insights
+            </a>
+          </div>
+        </div>
+
+        <!-- KPI ROW -->
+        <div class="row g-3 mb-4" id="kpiRow"></div>
+
+        <div class="row g-3 mb-4">
+          <!-- REVENUE -->
+          <div class="col-xl-8">
+            <div class="panel h-100">
+              <div class="panel-head">
+                <div>
+                  <h3>Revenue</h3>
+                  <p>Property, land and training income over the last six months</p>
+                </div>
+                <div class="chart-legend">
+                  <span><i style="background:#6f9068"></i> Property</span>
+                  <span><i style="background:#c3a15a"></i> Land</span>
+                  <span><i style="background:#4a7c9b"></i> Training</span>
+                </div>
+              </div>
+              <div class="panel-body">
+                <div class="chart-box" style="height: 300px">
+                  <canvas id="revenueChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ACTIVITY -->
+          <div class="col-xl-4">
+            <div class="panel h-100">
+              <div class="panel-head">
+                <div><h3>Recent activity</h3></div>
+                <button class="row-btn" type="button" title="Refresh" aria-label="Refresh">
+                  <i class="fa-solid fa-rotate-right"></i>
+                </button>
+              </div>
+              <div class="panel-body" id="activityFeed"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-3 mb-4">
+          <!-- OUTSTANDING COMMITMENTS -->
+          <div class="col-xl-7">
+            <div class="panel h-100">
+              <div class="panel-head">
+                <div>
+                  <h3>Outstanding commitments</h3>
+                  <p>Clients still paying toward a property</p>
+                </div>
+                <a href="clients.html" class="btn btn-ghost btn-sm">View all</a>
+              </div>
+              <div class="panel-body flush">
+                <div class="table-wrap">
+                  <table class="table align-middle" id="commitTable" style="width:100%">
+                    <thead>
+                      <tr>
+                        <th>Client</th>
+                        <th>Property</th>
+                        <th>Paid</th>
+                        <th>Realtor</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TOP REALTORS -->
+          <div class="col-xl-5">
+            <div class="panel h-100">
+              <div class="panel-head">
+                <div>
+                  <h3>Top realtors</h3>
+                  <p>By value closed this year</p>
+                </div>
+                <a href="realtors.html" class="btn btn-ghost btn-sm">All realtors</a>
+              </div>
+              <div class="panel-body" id="topRealtors"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-3">
+          <!-- UPCOMING INSPECTIONS -->
+          <div class="col-xl-6">
+            <div class="panel h-100">
+              <div class="panel-head">
+                <div>
+                  <h3>Upcoming inspections</h3>
+                  <p>Booked from the website</p>
+                </div>
+                <a href="inspections.html" class="btn btn-ghost btn-sm">View all</a>
+              </div>
+              <div class="panel-body" id="upcomingInspections"></div>
+            </div>
+          </div>
+
+          <!-- TRAINING SNAPSHOT -->
+          <div class="col-xl-6">
+            <div class="panel h-100">
+              <div class="panel-head">
+                <div>
+                  <h3>Training snapshot</h3>
+                  <p>Enrolment by programme</p>
+                </div>
+                <a href="trainees.html" class="btn btn-ghost btn-sm">Trainees</a>
+              </div>
+              <div class="panel-body">
+                <div class="chart-box" style="height: 250px">
+                  <canvas id="programChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </main>
+
+    </div>
+  </div>
+
+  <div class="toast-host"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.8/js/dataTables.bootstrap5.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../shared/theme.js"></script>
+  <script src="../public/assets/js/data.js"></script>
+  <script src="assets/js/admin-data.js"></script>
+  <script src="assets/js/admin.js"></script>
+  <script>
+    (function () {
+      var A = window.Admin;
+      var clients = window.ADMIN_CLIENTS, realtors = window.ADMIN_REALTORS,
+          payments = window.ADMIN_PAYMENTS, trainees = window.ADMIN_TRAINEES,
+          inspections = window.ADMIN_INSPECTIONS, ins = window.ADMIN_INSIGHTS;
+
+      document.getElementById("todayDate").textContent =
+        new Date().toLocaleDateString("en-NG", { weekday: "long", day: "numeric", month: "long" });
+
+      /* ---- KPIs computed from the data, never hardcoded ---- */
+      var props = window.IHAM_PROPERTIES || [];
+      var totalProperties = props.length;
+      var activeTrainees = trainees.filter(function (t) { return t.status === "In Training"; }).length;
+      var pendingAmount = payments.filter(function (p) { return p.status === "Pending"; })
+                                  .reduce(function (a, p) { return a + p.amount; }, 0);
+      var pendingCount = payments.filter(function (p) { return p.status === "Pending"; }).length;
+      var received = payments.filter(function (p) { return p.status === "Completed"; })
+                             .reduce(function (a, p) { return a + p.amount; }, 0);
+      var committed = clients.reduce(function (a, c) { return a + c.total; }, 0);
+      var collected = clients.reduce(function (a, c) { return a + c.paid; }, 0);
+      var outstanding = committed - collected;
+
+      var kpis = [
+        { label: "Total Properties", value: totalProperties, ico: "fa-building", tone: "",
+          foot: '<span class="trend up"><i class="fa-solid fa-arrow-up"></i> 2</span> added this month' },
+        { label: "Active Trainees", value: activeTrainees, ico: "fa-user-graduate", tone: "info",
+          foot: '<span class="trend up"><i class="fa-solid fa-arrow-up"></i> 3</span> new this intake' },
+        { label: "Pending Payments", value: A.moneyShort(pendingAmount), ico: "fa-clock-rotate-left", tone: "warn",
+          foot: pendingCount + " transactions awaiting confirmation" },
+        { label: "Payments Received", value: A.moneyShort(received), ico: "fa-circle-check", tone: "ok",
+          foot: '<span class="trend up"><i class="fa-solid fa-arrow-up"></i> 12.4%</span> vs last month' },
+        { label: "Total Committed", value: A.moneyShort(committed), ico: "fa-file-signature", tone: "info",
+          foot: clients.length + " active client commitments" },
+        { label: "Outstanding Balance", value: A.moneyShort(outstanding), ico: "fa-scale-unbalanced", tone: "bad",
+          foot: "Still to be collected on active plans" },
+        { label: "Realtors", value: realtors.filter(function (r) { return r.status !== "Inactive"; }).length,
+          ico: "fa-user-tie", tone: "",
+          foot: realtors.length + " on the books in total" },
+        { label: "Inspections This Week", value: inspections.filter(function (i) { return i.status !== "Completed"; }).length,
+          ico: "fa-calendar-check", tone: "ok",
+          foot: "Booked through the website" }
+      ];
+
+      document.getElementById("kpiRow").innerHTML = kpis.map(function (k) {
+        return '<div class="col-6 col-lg-3">' +
+          '<div class="kpi">' +
+            '<div class="kpi-top">' +
+              '<span class="kpi-label">' + k.label + '</span>' +
+              '<span class="kpi-ico ' + k.tone + '"><i class="fa-solid ' + k.ico + '"></i></span>' +
+            '</div>' +
+            '<div class="kpi-value">' + k.value + '</div>' +
+            '<div class="kpi-foot">' + k.foot + '</div>' +
+          '</div></div>';
+      }).join("");
+
+      /* ---- Activity feed ---- */
+      document.getElementById("activityFeed").innerHTML = window.ADMIN_ACTIVITY.map(function (a) {
+        return '<div class="feed-item">' +
+          '<span class="feed-ico ' + a.tone + '"><i class="fa-solid ' + a.icon + '"></i></span>' +
+          '<div class="feed-body"><strong>' + A.esc(a.title) + '</strong>' +
+          '<p>' + A.esc(a.text) + '</p>' +
+          '<span class="feed-time">' + A.esc(a.time) + '</span></div></div>';
+      }).join("");
+
+      /* ---- Outstanding commitments table ---- */
+      document.querySelector("#commitTable tbody").innerHTML = clients
+        .filter(function (c) { return c.paid < c.total; })
+        .sort(function (a, b) { return (b.total - b.paid) - (a.total - a.paid); })
+        .slice(0, 6)
+        .map(function (c) {
+          return "<tr>" +
+            '<td><div class="cell-main"><span class="avatar" style="width:36px;height:36px;font-size:.75rem">' +
+              A.initials(c.name) + '</span><div class="cell-text"><strong>' + A.esc(c.name) +
+              '</strong><small>' + A.esc(c.state) + "</small></div></div></td>" +
+            '<td><div class="cell-text"><strong>' + A.esc(c.property) + "</strong>" +
+              '<small>' + (c.track === "land" ? "Land" : "Property") + "</small></div></td>" +
+            "<td>" + A.payProgress(c.paid, c.total) + "</td>" +
+            '<td><span class="badge-soft neutral">' + A.esc(A.realtorName(c.realtor)) + "</span></td>" +
+          "</tr>";
+        }).join("");
+
+      A.makeTable("#commitTable", { paging: false, searching: false, info: false, order: [] });
+
+      /* ---- Top realtors ---- */
+      A.rankList("#topRealtors", realtors
+        .slice().sort(function (a, b) { return b.volume - a.volume; })
+        .slice(0, 6)
+        .map(function (r) { return { name: r.name + " · " + r.closed + " closed", value: r.volume }; }));
+
+      /* ---- Upcoming inspections ---- */
+      document.getElementById("upcomingInspections").innerHTML = inspections
+        .filter(function (i) { return i.status === "Confirmed" || i.status === "Pending"; })
+        .slice(0, 5)
+        .map(function (i) {
+          return '<div class="feed-item">' +
+            '<span class="feed-ico ' + (i.status === "Confirmed" ? "ok" : "warn") + '">' +
+            '<i class="fa-solid fa-calendar-day"></i></span>' +
+            '<div class="feed-body"><strong>' + A.esc(i.name) + " — " + A.esc(i.property) + "</strong>" +
+            "<p>" + A.esc(i.state) + " · " + A.esc(i.occupation) + "</p>" +
+            '<span class="feed-time">' + A.date(i.date) + " at " + A.esc(i.time) + " · " +
+            A.esc(A.realtorName(i.realtor)) + "</span></div>" +
+            '<div style="margin-inline-start:auto">' + A.statusBadge(i.status) + "</div></div>";
+        }).join("");
+
+      /* ---- Charts ---- */
+      var revChart, progChart;
+
+      A.registerChart(function () {
+        var t = A.tokens();
+        var d = ins.revenueByMonth;
+        var el = document.getElementById("revenueChart");
+        if (revChart) revChart.destroy();
+        revChart = new Chart(el, {
+          type: "bar",
+          data: {
+            labels: d.labels,
+            datasets: [
+              { label: "Property", data: d.property, backgroundColor: "#6f9068", borderRadius: 5, maxBarThickness: 26 },
+              { label: "Land", data: d.land, backgroundColor: "#c3a15a", borderRadius: 5, maxBarThickness: 26 },
+              { label: "Training", data: d.training, backgroundColor: "#4a7c9b", borderRadius: 5, maxBarThickness: 26 }
+            ]
+          },
+          options: {
+            plugins: {
+              tooltip: { callbacks: { label: function (c) { return c.dataset.label + ": " + A.money(c.parsed.y); } } }
+            },
+            scales: {
+              x: { grid: { display: false }, ticks: { color: t.text } },
+              y: { grid: { color: t.grid }, ticks: { color: t.text, callback: function (v) { return A.moneyShort(v); } } }
+            }
+          }
+        });
+      });
+
+      A.registerChart(function () {
+        var el = document.getElementById("programChart");
+        var counts = {};
+        trainees.forEach(function (tr) { counts[tr.program] = (counts[tr.program] || 0) + 1; });
+        var labels = Object.keys(counts);
+        if (progChart) progChart.destroy();
+        progChart = new Chart(el, {
+          type: "doughnut",
+          data: {
+            labels: labels,
+            datasets: [{
+              data: labels.map(function (l) { return counts[l]; }),
+              backgroundColor: A.SERIES,
+              borderWidth: 0,
+              hoverOffset: 6
+            }]
+          },
+          options: {
+            cutout: "62%",
+            plugins: {
+              legend: {
+                display: true,
+                position: "bottom",
+                labels: { boxWidth: 9, boxHeight: 9, usePointStyle: true, pointStyle: "circle", padding: 14 }
+              }
+            }
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+
+</html>
