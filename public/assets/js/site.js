@@ -6,7 +6,7 @@
 
   /* The number inspection bookings and enquiries are sent to.
      Digits only, full international format, no + and no spaces. */
-  var WHATSAPP_NUMBER = "2348058891992";
+  var WHATSAPP_NUMBER = "2349067871178";
 
   var naira = new Intl.NumberFormat("en-NG", {
     style: "currency",
